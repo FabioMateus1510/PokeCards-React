@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0px;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+}
+
+body {
+  height: 100vh;
+
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    to bottom,
+    rgba(2, 0, 36, 1) 0%,
+    rgb(11, 41, 142) 35%,
+    rgb(17, 194, 230) 100%
+  );
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
+}
+
+nav {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar-img {
+  width: 240px;
+  margin-top: 40px;
+}
+
+.searchbar {
+  border: none;
+  color: white;
+  border-radius: 10px;
+  background-color: transparent;
+  padding: 9px;
+  width: 15%;
+  font-size: 17px;
+}
+
+.searchbar::placeholder {
+  color: white;
+  font-size: 17px;
+}
+
+.searchbar:focus-visible {
+  border: none;
+}
+
+.pokedex-header {
+  width: 60%;
+  margin: 55px auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.pokedex-grid {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 70vh;
+  width: 80%;
+  padding-top: 17px;
+  margin: 30px auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+/* Mozilla Firefox */
+.pokedex-grid scrollbar {
+  width: 20px;
+  background-color: transparent;
+}
+
+.pokedex-grid scrollbar-thumb {
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000;
+  background-image: url('./img/Poké_Ball_icon2.png');
+  background-repeat: no-repeat;
+}
+
+/* Webkit browsers (Safari, Google Chrome) */
+.pokedex-grid::-webkit-scrollbar {
+  /* background-color: blue; */
+  width: 26px;
+}
+
+.pokedex-grid::-webkit-scrollbar-thumb {
+  background-image: url('./img/pokeballScroll5.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-color: red; */
+  border-radius: 50%;
+}
+
+/* Internet Explorer / Edge */
+.pokedex-grid {
+  scrollbar-face-color: transparent;
+  scrollbar-track-color: transparent;
+  scrollbar-base-color: transparent;
+  scrollbar-arrow-color: transparent;
+}
+
+.pokedex-grid scrollbar-thumb {
+  background-image: url('./img/Poké_Ball_icon2.png');
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  height: 20px;
+}
+
+.pokemon-card {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30.7%;
+  height: 170px;
+  border-radius: 10px;
+  background-color: rgb(212, 212, 212);
+  box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-in-out; /* adiciona uma transição suave */
+}
+
+.pokemon-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 9px 9px 0px 0px;
+  padding: 5px 10px;
+}
+
+.card-body {
+  font-size: 14px;
+  width: 97.8%;
+  height: 82%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0px 0px 10px;
+  border-radius: 0px 0px 9px 9px;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.card-info {
+  width: 50%;
+  /* margin-top: 10px; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: white;
+  /* background-color: rgba(0, 0, 0, 0.21); */
+}
+
+.card-image {
+  width: 25%;
+  overflow: hidden;
+}
+
+.pokemon-img {
+  width: 70px;
+  margin-top: 30px;
+}
+
+.pagination-container button {
+  background: transparent;
+  border: none;
+  margin: 5px;
+}
+
+.info-type {
+  margin-top: 5px;
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0.45);
+  padding: 5px;
+}
+
+.card-info-abilities {
+  width: 200%;
+  display: flex;
+}
+
+.info-ability {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 5px;
+  margin-right: 10px;
+  /* width: 100%; */
+  text-align: center;
+}
+
+.App {
+  text-align: center;
+}
+
+.loading-container {
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* opcional, define a altura da div para preencher a tela inteira */
+}
+
+.loading {
+  width: 200px;
+}
+
+.favorite-icon {
+  width: 16px;
+  margin-left: 5px;
+}
+
+.fav-name-color {
+  color: rgb(219, 169, 4);
+}
