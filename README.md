@@ -10,6 +10,6 @@ JavaScript (React (React hooks, useState, useContext, localStorage))
 
 ## Como acessar e utilizar o Pokécards:
 
-Você pode acessar o projeto em https://fabiomateus1510.github.io/pokeCards-react.<br> Para favoritar um Pokémon, basta clicar em cima de seu card.
+Você pode acessar o projeto em https://fabiomateus1510.github.io/PokeCards-react/.<br> Para favoritar um Pokémon, basta clicar em cima de seu card.
 
 <img src="src/img/exemplo1.gif">
