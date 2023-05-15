@@ -55,7 +55,7 @@ const Pokedex = (props) => {
           onChange={onChangeHandler}
         />
 
-        <h1>PokeCards</h1>
+        <h1 className='title'>PokeCards</h1>
 
         <Pagination
           page={page + 1}

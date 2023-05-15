@@ -7,13 +7,13 @@ export default function Pagination(props) {
   return (
     <div className='pagination-container'>
       <button onClick={onPrevClick}>
-        <img src={prevButton} alt='Back arrow' />
+        <img className='arrow-button' src={prevButton} alt='Back arrow' />
       </button>
       <span>
         {page} de {totalPages}
       </span>
       <button onClick={onNextClick}>
-        <img src={nextButton} alt='Next arrow' />
+        <img className='arrow-button' src={nextButton} alt='Next arrow' />
       </button>
     </div>
   );
