@@ -99,18 +99,22 @@ export default function Pokemoncard(props) {
       <div className='card-body'>
         <div className='card-info'>
           {pokemon.weight / 10 > 1 ? (
-            <span>
+            <span className='info-weigth-heigth '>
               Peso:{(pokemon.weight / 10).toFixed(1).replace('.', ',')}KG
             </span>
           ) : (
-            <span>Peso:{pokemon.weight * 100}G</span>
+            <span className='info-weigth-heigth '>
+              Peso:{pokemon.weight * 100}G
+            </span>
           )}
           {pokemon.height * 10 >= 100 ? (
-            <span>
+            <span className='info-weigth-heigth '>
               Altura:{(pokemon.height / 10).toFixed(2).replace('.', ',')}M
             </span>
           ) : (
-            <span>Altura:{pokemon.height * 10}CM</span>
+            <span className='info-weigth-heigth '>
+              Altura:{pokemon.height * 10}CM
+            </span>
           )}
           <div className='card-info-types'>
             {pokemon.types.map((element, index) => (
