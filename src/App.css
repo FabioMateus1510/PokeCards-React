@@ -136,7 +136,7 @@ nav {
   font-size: 0.87vw;
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 9px 9px 0px 0px;
   padding: 5px 14px;
 }
@@ -150,7 +150,7 @@ nav {
   justify-content: space-between;
   padding: 2px 0px 0px 10px;
   border-radius: 0px 0px 9px 9px;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .card-info {
@@ -159,7 +159,7 @@ nav {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   color: white;
   /* background-color: rgba(0, 0, 0, 0.21); */
 }
@@ -202,24 +202,28 @@ nav {
   margin-top: 5px;
   margin-right: 10px;
   background-color: rgba(0, 0, 0, 0.45);
-  padding: 5px;
+  padding: 6px;
+  border-radius: 10px;
 }
 
 .info-ability {
   width: 35%;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.25);
   margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0.45);
+  padding: 6px;
+  border-radius: 10px;
 }
 
-.info-weigth-heigth {
-  width: 72%;
-}
-
-.info-weigth-heigth,
-.info-ability {
-  background-color: rgba(0, 0, 0, 0.25);
-  padding: 5px;
+.card-info-weigth-heigth {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 3px 3px 2px 8px;
+  border-radius: 10px;
+  width: 85%;
+  height: 31%;
+  background-color: rgba(0, 0, 0, 0.45);
 }
 
 .loading-container {

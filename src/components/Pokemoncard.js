@@ -48,24 +48,26 @@ export default function Pokemoncard(props) {
   };
 
   const getColorType = (tipos) => {
+    let opacity = 0.5;
+
     const tipoCores = {
-      normal: 'rgba(245, 245, 220, 0.5)',
-      fire: 'rgba(255, 0, 0, 0.5)',
-      water: 'rgba(64, 224, 208, 0.5)',
-      grass: 'rgba(0, 174, 0, 0.5)',
-      electric: 'rgba(255, 255, 0, 0.5)',
-      ice: 'rgba(225, 231, 228, 0.5)',
-      fighting: 'rgba(255, 140, 0, 0.5)',
-      poison: 'rgba(198, 84, 255, 0.5)',
-      ground: 'rgba(149, 95, 62, 0.5)',
-      flying: 'rgba(0, 136, 255, 0.5)',
-      psychic: 'rgba(255, 192, 203, 0.5)',
-      bug: 'rgba(0, 255, 0, 0.5)',
-      rock: 'rgba(139, 139, 139, 0.5)',
-      ghost: 'rgba(238, 130, 238, 0.5)',
-      dragon: 'rgba(243, 78, 78, 0.5)',
-      dark: 'rgba(0, 0, 0, 0.5)',
-      fairy: 'rgba(253, 117, 237, 0.5)',
+      normal: `rgba(245, 245, 220, ${opacity})`,
+      fire: `rgba(255, 0, 0, ${opacity})`,
+      water: `rgba(64, 224, 208, ${opacity})`,
+      grass: `rgba(0, 174, 0, ${opacity})`,
+      electric: `rgba(255, 255, 0, ${opacity})`,
+      ice: `rgba(225, 231, 228, ${opacity})`,
+      fighting: `rgba(255, 140, 0, ${opacity})`,
+      poison: `rgba(198, 84, 255, ${opacity})`,
+      ground: `rgba(149, 95, 62, ${opacity})`,
+      flying: `rgba(0, 136, 255, ${opacity})`,
+      psychic: `rgba(255, 192, 203, ${opacity})`,
+      bug: `rgba(0, 255, 0, ${opacity})`,
+      rock: `rgba(139, 139, 139, ${opacity})`,
+      ghost: `rgba(238, 130, 238, ${opacity})`,
+      dragon: `rgba(243, 78, 78, ${opacity})`,
+      dark: `rgba(0, 0, 0, ${opacity})`,
+      fairy: `rgba(253, 117, 237, ${opacity})`,
     };
     return tipos.map((tipo) => tipoCores[tipo.type.name]);
   };
@@ -98,24 +100,22 @@ export default function Pokemoncard(props) {
       </div>
       <div className='card-body'>
         <div className='card-info'>
-          {pokemon.weight / 10 > 1 ? (
-            <span className='info-weigth-heigth '>
-              Peso:{(pokemon.weight / 10).toFixed(1).replace('.', ',')}KG
-            </span>
-          ) : (
-            <span className='info-weigth-heigth '>
-              Peso:{pokemon.weight * 100}G
-            </span>
-          )}
-          {pokemon.height * 10 >= 100 ? (
-            <span className='info-weigth-heigth '>
-              Altura:{(pokemon.height / 10).toFixed(2).replace('.', ',')}M
-            </span>
-          ) : (
-            <span className='info-weigth-heigth '>
-              Altura:{pokemon.height * 10}CM
-            </span>
-          )}
+          <div className='card-info-weigth-heigth '>
+            {pokemon.weight / 10 > 1 ? (
+              <span>
+                weight:{(pokemon.weight / 10).toFixed(1).replace('.', ',')}KG
+              </span>
+            ) : (
+              <span>weight:{pokemon.weight * 100}G</span>
+            )}
+            {pokemon.height * 10 >= 100 ? (
+              <span>
+                height:{(pokemon.height / 10).toFixed(2).replace('.', ',')}M
+              </span>
+            ) : (
+              <span>height:{pokemon.height * 10}CM</span>
+            )}
+          </div>
           <div className='card-info-types'>
             {pokemon.types.map((element, index) => (
               <span
