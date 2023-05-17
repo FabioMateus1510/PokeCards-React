@@ -119,6 +119,7 @@ nav {
 .pokemon-card {
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: right center;
   width: 30.5%;
   height: 25%;
   border-radius: 10px;

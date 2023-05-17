@@ -24,7 +24,7 @@ export default function Pokemoncard(props) {
   const { favoritePokemons, updateFavoritePokemons } =
     useContext(FavoriteContext);
 
-  const getBackgroundUrl = (tipo) => {
+  const getBackgroundUrl = (tipos) => {
     const typeToImage = {
       normal: normalBackground,
       fire: fireBackground,
@@ -44,7 +44,11 @@ export default function Pokemoncard(props) {
       dark: darkBackground,
       fairy: fairyBackground,
     };
-    return typeToImage[tipo];
+    const backgrounds = tipos.map((tipo) => typeToImage[tipo.type.name]);
+    if (backgrounds[1] === flyingBackground) {
+      return flyingBackground;
+    }
+    return backgrounds[0];
   };
 
   const getColorType = (tipos) => {
@@ -85,7 +89,7 @@ export default function Pokemoncard(props) {
   const favorited = favoritePokemons.some((p) => p === pokemon.name);
 
   const backgroundColor = getColorType(pokemon.types);
-  const backgroundUrl = getBackgroundUrl(pokemon.types[0].type.name);
+  const backgroundUrl = getBackgroundUrl(pokemon.types);
 
   return (
     <div
