@@ -48,7 +48,7 @@ export default function Pokemoncard(props) {
   };
 
   const getColorType = (tipos) => {
-    let opacity = 0.5;
+    let opacity = 0.7;
 
     const tipoCores = {
       normal: `rgba(245, 245, 220, ${opacity})`,
@@ -69,7 +69,13 @@ export default function Pokemoncard(props) {
       dark: `rgba(0, 0, 0, ${opacity})`,
       fairy: `rgba(253, 117, 237, ${opacity})`,
     };
-    return tipos.map((tipo) => tipoCores[tipo.type.name]);
+    const colors = tipos.map((tipo) => tipoCores[tipo.type.name]);
+    if (colors.length === 1) {
+      return colors[0];
+    }
+    if (colors.length === 2) {
+      return `linear-gradient(115deg, ${colors[0]} 50%, ${colors[1]} 50%)`;
+    }
   };
 
   const favoriteHandle = () => {
@@ -78,7 +84,7 @@ export default function Pokemoncard(props) {
 
   const favorited = favoritePokemons.some((p) => p === pokemon.name);
 
-  const typeColor = getColorType(pokemon.types);
+  const backgroundColor = getColorType(pokemon.types);
   const backgroundUrl = getBackgroundUrl(pokemon.types[0].type.name);
 
   return (
@@ -102,25 +108,27 @@ export default function Pokemoncard(props) {
         <div className='card-info'>
           <div className='card-info-weigth-heigth '>
             {pokemon.weight / 10 > 1 ? (
-              <span>
-                weight:{(pokemon.weight / 10).toFixed(1).replace('.', ',')}KG
+              <span className='weigth-info'>
+                {(pokemon.weight / 10).toFixed(1).replace('.', ',')}KG
               </span>
             ) : (
-              <span>weight:{pokemon.weight * 100}G</span>
+              <span className='weigth-info'>{pokemon.weight * 100}G</span>
             )}
+            <span className='barra'>/</span>
             {pokemon.height * 10 >= 100 ? (
-              <span>
-                height:{(pokemon.height / 10).toFixed(2).replace('.', ',')}M
-              </span>
+              <span>{(pokemon.height / 10).toFixed(2).replace('.', ',')}M</span>
             ) : (
-              <span>height:{pokemon.height * 10}CM</span>
+              <span>{pokemon.height * 10}CM</span>
             )}
           </div>
-          <div className='card-info-types'>
+          <div
+            className='card-info-types'
+            style={{ background: backgroundColor }}
+          >
             {pokemon.types.map((element, index) => (
               <span
                 className='info-type'
-                style={{ background: typeColor[index] }}
+                // style={{ background: typeColor[index] }}
                 key={index}
               >
                 {element.type.name}
