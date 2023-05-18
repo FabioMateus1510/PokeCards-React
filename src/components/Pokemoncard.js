@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import normalBackground from '../img/backgrounds/normalBackground.jpg';
 import fireBackground from '../img/backgrounds/fireBackground.jpg';
 import waterBackground from '../img/backgrounds/waterBackground.jpg';
@@ -9,13 +9,14 @@ import fightingBackground from '../img/backgrounds/fightingBackground.jpg';
 import poisonBackground from '../img/backgrounds/poisonBackground.jpg';
 import groundBackground from '../img/backgrounds/groundBackground.jpg';
 import flyingBackground from '../img/backgrounds/flyingBackground.jpg';
-import psychicBackground from '../img/backgrounds/psychicBackground.jpg';
+import psychicBackground from '../img/backgrounds/psychicBackground.gif';
 import bugBackground from '../img/backgrounds/bugBackground.jpg';
 import rockBackground from '../img/backgrounds/rockBackground.jpg';
 import ghostBackground from '../img/backgrounds/ghostBackground.jpg';
-import dragonBackground from '../img/backgrounds/dragonBackground.jpg';
+import dragonBackground from '../img/backgrounds/dragonBackground.gif';
 import darkBackground from '../img/backgrounds/darkBackground.jpg';
 import fairyBackground from '../img/backgrounds/fairyBackground.jpg';
+import steelBackground from '../img/backgrounds/steelBackground.gif';
 import FavoriteContext from '../contexts/favoriteContext';
 import star from '../img/star2.png';
 
@@ -23,6 +24,7 @@ export default function Pokemoncard(props) {
   const { pokemon } = props;
   const { favoritePokemons, updateFavoritePokemons } =
     useContext(FavoriteContext);
+  const [backgroundIndex, setBackgroundIndex] = useState(0);
 
   const getBackgroundUrl = (tipos) => {
     const typeToImage = {
@@ -43,12 +45,14 @@ export default function Pokemoncard(props) {
       dragon: dragonBackground,
       dark: darkBackground,
       fairy: fairyBackground,
+      steel: steelBackground,
     };
     const backgrounds = tipos.map((tipo) => typeToImage[tipo.type.name]);
-    if (backgrounds[1] === flyingBackground) {
-      return flyingBackground;
-    }
-    return backgrounds[0];
+    return backgrounds;
+    // if (backgrounds[1] === flyingBackground) {
+    //   return flyingBackground;
+    // }
+    // return backgrounds[0];
   };
 
   const getColorType = (tipos) => {
@@ -91,10 +95,24 @@ export default function Pokemoncard(props) {
   const backgroundColor = getColorType(pokemon.types);
   const backgroundUrl = getBackgroundUrl(pokemon.types);
 
+  const changeBackground = () => {
+    setBackgroundIndex((prevIndex) => (prevIndex + 1) % backgroundUrl.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(changeBackground, 6000); // Alterna a cada 3 segundos (ajuste o valor conforme necessário)
+
+    return () => {
+      clearInterval(timer); // Limpa o temporizador quando o componente for desmontado
+    };
+  }, []);
+
   return (
     <div
       className='pokemon-card'
-      style={{ backgroundImage: `url(${backgroundUrl})` }}
+      style={{
+        backgroundImage: `url(${backgroundUrl[backgroundIndex]})`, // Usa o índice atual para obter a imagem de background
+      }}
       onClick={favoriteHandle}
     >
       <div className='card-header'>
