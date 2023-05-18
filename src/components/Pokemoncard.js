@@ -87,31 +87,38 @@ export default function Pokemoncard(props) {
   };
 
   const favoriteHandle = () => {
-    updateFavoritePokemons(pokemon.name);
+    updateFavoritePokemons(pokemon);
+    console.log(favoritePokemons);
   };
 
-  const favorited = favoritePokemons.some((p) => p === pokemon.name);
+  const favorited = favoritePokemons.some((p) => p.name === pokemon.name);
 
   const backgroundColor = getColorType(pokemon.types);
   const backgroundUrl = getBackgroundUrl(pokemon.types);
 
   const changeBackground = () => {
     setBackgroundIndex((prevIndex) => (prevIndex + 1) % backgroundUrl.length);
+    console.log(backgroundIndex);
   };
 
   useEffect(() => {
-    const timer = setInterval(changeBackground, 6000); // Alterna a cada 3 segundos (ajuste o valor conforme necessário)
+    if (pokemon.types.length === 2) {
+      const timer = setInterval(changeBackground, 6000); // Alterna a cada 6 segundos
 
-    return () => {
-      clearInterval(timer); // Limpa o temporizador quando o componente for desmontado
-    };
+      return () => {
+        clearInterval(timer); // Limpa o temporizador quando o componente for desmontado
+      };
+    }
   }, []);
 
   return (
     <div
       className='pokemon-card'
       style={{
-        backgroundImage: `url(${backgroundUrl[backgroundIndex]})`, // Usa o índice atual para obter a imagem de background
+        backgroundImage:
+          pokemon.types.length === 1
+            ? `url(${backgroundUrl[0]})`
+            : `url(${backgroundUrl[backgroundIndex]})`,
       }}
       onClick={favoriteHandle}
     >

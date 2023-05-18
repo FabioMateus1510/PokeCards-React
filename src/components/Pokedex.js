@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Pokemoncard from './Pokemoncard';
 import Pagination from './Pagination';
 import loadingCharizard from '../img/n1582570.gif';
+import FavoriteContext from '../contexts/favoriteContext';
+import star from '../img/star2.png';
 
 const Pokedex = (props) => {
   const [search, setSearch] = useState('');
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+  const { favoritePokemons, updateFavoritePokemons } =
+    useContext(FavoriteContext);
   const { pokemons, loading, page, setPage, totalPages } = props;
 
   const onPrevClickHandler = () => {
@@ -46,6 +51,14 @@ const Pokedex = (props) => {
       )
     : pokemons;
 
+  const showFavorites = () => {
+    if (showOnlyFavorites === false) {
+      setShowOnlyFavorites(true);
+    } else {
+      setShowOnlyFavorites(false);
+    }
+  };
+
   return (
     <div className='pokedex'>
       <div className='pokedex-header'>
@@ -54,8 +67,19 @@ const Pokedex = (props) => {
           placeholder='Buscar'
           onChange={onChangeHandler}
         />
-
-        <h1 className='title'>PokeCards</h1>
+        <div className='title-container'>
+          <h1
+            className={showOnlyFavorites ? 'title fav-name-color' : 'title'}
+            onClick={() => showFavorites()}
+          >
+            PokeCards
+          </h1>
+          {favoritePokemons.length !== 0 ? (
+            <span className='counter fav-name-color'>
+              {favoritePokemons.length}
+            </span>
+          ) : null}
+        </div>
 
         <Pagination
           page={page + 1}
@@ -75,9 +99,13 @@ const Pokedex = (props) => {
         </div>
       ) : (
         <div className='pokedex-grid'>
-          {filteredPokemons.map((pokemon, index) => (
-            <Pokemoncard pokemon={pokemon} key={index} />
-          ))}
+          {showOnlyFavorites
+            ? favoritePokemons.map((pokemon, index) => (
+                <Pokemoncard pokemon={pokemon} key={index} />
+              ))
+            : filteredPokemons.map((pokemon, index) => (
+                <Pokemoncard pokemon={pokemon} key={index} />
+              ))}
         </div>
       )}
     </div>
