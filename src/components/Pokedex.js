@@ -68,25 +68,23 @@ const Pokedex = (props) => {
           onChange={onChangeHandler}
         />
         <div className='title-container'>
-          <h1
-            className={showOnlyFavorites ? 'title fav-name-color' : 'title'}
+          <h1 className='title'>PokeCards</h1>
+        </div>
+        <div className='batata'>
+          <Pagination
+            page={page + 1}
+            totalPages={totalPages}
+            onPrevClick={onPrevClickHandler}
+            onNextClick={onNextClickHandler}
+          />
+          <span
+            className='counter fav-name-color'
             onClick={() => showFavorites()}
           >
-            PokeCards
-          </h1>
-          {favoritePokemons.length !== 0 ? (
-            <span className='counter fav-name-color'>
-              {favoritePokemons.length}
-            </span>
-          ) : null}
+            {favoritePokemons.length}{' '}
+            {favoritePokemons.length === 1 ? 'favorite' : 'favorites'}
+          </span>
         </div>
-
-        <Pagination
-          page={page + 1}
-          totalPages={totalPages}
-          onPrevClick={onPrevClickHandler}
-          onNextClick={onNextClickHandler}
-        />
       </div>
 
       {loading ? (

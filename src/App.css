@@ -54,9 +54,13 @@ nav {
   border: none;
 }
 
+/* .pokedex {
+  height: 90vh;
+} */
+
 .pokedex-header {
   width: 60%;
-  margin: 55px auto 0 auto;
+  margin: 40px auto 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -67,7 +71,7 @@ nav {
 .pokedex-grid {
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 70vh;
+  height: 78vh;
   width: 80%;
   padding-top: 17px;
   margin: 30px auto 0 auto;
@@ -95,12 +99,14 @@ nav {
 .pokedex-grid::-webkit-scrollbar {
   /* background-color: blue; */
   width: 1.7vw;
+  height: 30px;
 }
 
 .pokedex-grid::-webkit-scrollbar-thumb {
   background-image: url('./img/pokeballScroll5.png');
   background-size: cover;
   background-repeat: no-repeat;
+  height: 30px;
 }
 
 /* Internet Explorer / Edge */
@@ -123,7 +129,7 @@ nav {
   background-size: cover;
   background-position: right center;
   width: 30.5%;
-  height: 25%;
+  height: 23%;
   border-radius: 10px;
   background-color: rgb(212, 212, 212);
   box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.4);
@@ -267,21 +273,59 @@ nav {
 }
 
 .fav-name-color {
-  color: rgb(219, 169, 4);
+  color: rgb(227, 122, 2);
+}
+
+:root {
+  --text-shadow-offset: 3px;
+  --text-shadow-color: #0a68c1;
 }
 
 .title {
-  font-size: 2.25vw;
+  font-size: 2.5vw;
   cursor: pointer;
+  text-shadow: var(--text-shadow-offset) var(--text-shadow-offset) 0
+      var(--text-shadow-color),
+    var(--text-shadow-offset) calc(-1 * var(--text-shadow-offset)) 0
+      var(--text-shadow-color),
+    calc(-1 * var(--text-shadow-offset)) var(--text-shadow-offset) 0
+      var(--text-shadow-color),
+    calc(-1 * var(--text-shadow-offset)) calc(-1 * var(--text-shadow-offset)) 0
+      var(--text-shadow-color),
+    var(--text-shadow-offset) 0 0 var(--text-shadow-color),
+    0 var(--text-shadow-offset) 0 var(--text-shadow-color),
+    calc(-1 * var(--text-shadow-offset)) 0 0 var(--text-shadow-color),
+    0 calc(-1 * var(--text-shadow-offset)) 0 var(--text-shadow-color),
+    var(--text-shadow-offset) var(--text-shadow-offset)
+      var(--text-shadow-offset) rgba(35, 99, 206, 0);
 }
 
 .title-container {
   display: flex;
 }
 
+.batata {
+  /* background-color: red; */
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .counter {
-  position: absolute;
-  font-size: 0.9vw;
-  top: 10.1vw;
-  right: 38vw;
+  cursor: pointer;
+  /* position: absolute; */
+  font-size: 0.8vw;
+  width: 8.9vw;
+  /* top: 6.5vw; */
+  /* right: 20.1vw; */
+  transition: all 0.7s;
+  padding: 6px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  color: rgb(11, 0, 91);
+}
+.counter:hover {
+  transform: scale(1.07);
 }

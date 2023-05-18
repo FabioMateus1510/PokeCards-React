@@ -49,7 +49,7 @@ function App() {
       }}
     >
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <Pokedex
           pokemons={pokemons}
           loading={loading}
