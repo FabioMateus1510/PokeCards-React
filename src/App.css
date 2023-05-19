@@ -44,10 +44,12 @@ body {
 }
 
 .types-option {
-  background-color: rgb(0, 206, 253);
-  width: 114%;
-  height: 30%;
+  background-color: rgb(0, 157, 255);
+  width: 113.5%;
+  height: 35%;
   border-radius: 5px;
+  text-align: center;
+  border: 1.5px solid white;
 }
 
 .types-option option {
@@ -129,7 +131,7 @@ body {
   color: rgb(11, 0, 91);
 }
 
-.counter:hover {
+.favorites-counter:hover {
   transform: scale(1.07);
 }
 
@@ -219,6 +221,7 @@ body {
 }
 
 .card-header span {
+  text-transform: capitalize;
   font-family: 'Oxanium', cursive;
   font-weight: 600;
 }
@@ -244,10 +247,11 @@ body {
 }
 
 .card-info span {
+  text-transform: capitalize;
   font-family: 'Oswald', sans-serif;
   font-size: 15px;
   font-weight: 400;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .card-info-weigth-heigth {
@@ -302,12 +306,12 @@ body {
 
 .card-image {
   width: 25%;
+  overflow: hidden;
 }
 
 .pokemon-img {
   width: 73%;
   margin-top: 17%;
-  overflow: hidden;
 }
 
 .loading-container {

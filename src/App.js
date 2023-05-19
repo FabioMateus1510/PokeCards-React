@@ -26,7 +26,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log('carregou');
     fetchPokemons();
   }, [page]);
 

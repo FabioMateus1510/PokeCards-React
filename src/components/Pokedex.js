@@ -1,16 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useContext, useState, useCallback } from 'react';
+
 import Pokemoncard from './Pokemoncard';
 import Pagination from './Pagination';
 import loadingCharizard from '../img/n1582570.gif';
 import FavoriteContext from '../contexts/favoriteContext';
-import star from '../img/star2.png';
 
 const Pokedex = (props) => {
   const [search, setSearch] = useState('');
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+  const [selectedType, setSelectedType] = useState('all');
   const { favoritePokemons, updateFavoritePokemons } =
     useContext(FavoriteContext);
   const { pokemons, loading, page, setPage, totalPages } = props;
+  const [filteredByType, setFilteredByType] = useState(pokemons);
+  const [filteredByName, setFilteredByName] = useState(pokemons);
 
   const onPrevClickHandler = () => {
     if (page > 0) {
@@ -23,41 +26,48 @@ const Pokedex = (props) => {
     }
   };
 
-  const onSearch = (search) => {
-    if (!search) {
-      return pokemons;
-    }
+  const onChangeHandler = useCallback(
+    (e) => {
+      const searchValue = e.target.value;
+      setSearch(searchValue);
+      let filteredByName;
+      if (selectedType === 'all') {
+        filteredByName = pokemons.filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
+        );
+      } else {
+        filteredByName = filteredByType.filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
+        );
+      }
+      setFilteredByName(filteredByName);
+    },
+    [pokemons, selectedType, filteredByType]
+  );
 
-    // Filtra os pokémons com base na string de pesquisa.
-    const filteredPokemons = pokemons.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(search.toLowerCase())
-    );
-
-    return filteredPokemons;
-  };
-
-  const onChangeHandler = (e) => {
-    setSearch(e.target.value);
-    if (e.target.value === '') {
-      onSearch(undefined);
+  const filterByType = () => {
+    if (selectedType === 'all') {
+      setFilteredByType(pokemons);
     } else {
-      onSearch(e.target.value);
+      const filteredByType = pokemons.filter((pokemon) =>
+        pokemon.types.some((type) => type.type.name === selectedType)
+      );
+      setFilteredByType(filteredByType);
     }
   };
 
-  const filteredPokemons = search
-    ? pokemons.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(search.toLowerCase())
-      )
-    : pokemons;
-
-  const showFavorites = () => {
-    if (showOnlyFavorites === false) {
-      setShowOnlyFavorites(true);
-    } else {
-      setShowOnlyFavorites(false);
-    }
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
+    setSearch('');
   };
+
+  const showFavorites = useCallback(() => {
+    setShowOnlyFavorites((prevShowOnlyFavorites) => !prevShowOnlyFavorites);
+  }, []);
+
+  useEffect(() => {
+    filterByType();
+  }, [selectedType, pokemons]);
 
   return (
     <div className='pokedex'>
@@ -65,11 +75,16 @@ const Pokedex = (props) => {
         <div className='filters'>
           <input
             className='searchbar'
+            value={search}
             placeholder='Buscar'
             onChange={onChangeHandler}
           />
-          <select class='types-option'>
-            <option value='' selected disabled></option>
+          <select
+            className='types-option'
+            value={selectedType}
+            onChange={handleTypeChange}
+          >
+            <option value='all'>All</option>
             <option value='normal'>Normal</option>
             <option value='fire'>Fire</option>
             <option value='water'>Water</option>
@@ -100,7 +115,7 @@ const Pokedex = (props) => {
             onPrevClick={onPrevClickHandler}
             onNextClick={onNextClickHandler}
           />
-          <span className='favorites-counter' onClick={() => showFavorites()}>
+          <span className='favorites-counter' onClick={showFavorites}>
             {favoritePokemons.length}{' '}
             {favoritePokemons.length === 1 ? 'favorite' : 'favorites'}
           </span>
@@ -119,10 +134,14 @@ const Pokedex = (props) => {
         <div className='cards-container'>
           {showOnlyFavorites
             ? favoritePokemons.map((pokemon, index) => (
-                <Pokemoncard pokemon={pokemon} key={index} />
+                <Pokemoncard pokemon={pokemon} key={pokemon.id} />
               ))
-            : filteredPokemons.map((pokemon, index) => (
-                <Pokemoncard pokemon={pokemon} key={index} />
+            : search
+            ? filteredByName.map((pokemon, index) => (
+                <Pokemoncard pokemon={pokemon} key={pokemon.id} />
+              ))
+            : filteredByType.map((pokemon, index) => (
+                <Pokemoncard pokemon={pokemon} key={pokemon.id} />
               ))}
         </div>
       )}

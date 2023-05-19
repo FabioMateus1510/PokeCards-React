@@ -47,16 +47,11 @@ export default function Pokemoncard(props) {
       fairy: fairyBackground,
       steel: steelBackground,
     };
-    const backgrounds = tipos.map((tipo) => typeToImage[tipo.type.name]);
-    return backgrounds;
-    // if (backgrounds[1] === flyingBackground) {
-    //   return flyingBackground;
-    // }
-    // return backgrounds[0];
+    return tipos.map((tipo) => typeToImage[tipo.type.name]);
   };
 
   const getColorType = (tipos) => {
-    let opacity = 0.7;
+    const opacity = 0.7;
 
     const tipoCores = {
       normal: `rgba(245, 245, 220, ${opacity})`,
@@ -78,17 +73,13 @@ export default function Pokemoncard(props) {
       fairy: `rgba(253, 117, 237, ${opacity})`,
     };
     const colors = tipos.map((tipo) => tipoCores[tipo.type.name]);
-    if (colors.length === 1) {
-      return colors[0];
-    }
-    if (colors.length === 2) {
-      return `linear-gradient(115deg, ${colors[0]} 50%, ${colors[1]} 50%)`;
-    }
+    return colors.length === 1
+      ? colors[0]
+      : `linear-gradient(115deg, ${colors[0]} 50%, ${colors[1]} 50%)`;
   };
 
   const favoriteHandle = () => {
     updateFavoritePokemons(pokemon);
-    console.log(favoritePokemons);
   };
 
   const favorited = favoritePokemons.some((p) => p.name === pokemon.name);
@@ -98,12 +89,11 @@ export default function Pokemoncard(props) {
 
   const changeBackground = () => {
     setBackgroundIndex((prevIndex) => (prevIndex + 1) % backgroundUrl.length);
-    console.log(backgroundIndex);
   };
 
   useEffect(() => {
     if (pokemon.types.length === 2) {
-      const timer = setInterval(changeBackground, 6000); // Alterna a cada 6 segundos
+      const timer = setInterval(changeBackground, 5000); // Alterna a cada 5 segundos
 
       return () => {
         clearInterval(timer); // Limpa o temporizador quando o componente for desmontado
@@ -155,11 +145,7 @@ export default function Pokemoncard(props) {
             style={{ background: backgroundColor }}
           >
             {pokemon.types.map((element, index) => (
-              <span
-                className='info-type'
-                // style={{ background: typeColor[index] }}
-                key={index}
-              >
+              <span className='info-type' key={index}>
                 {element.type.name}
               </span>
             ))}
