@@ -113,7 +113,7 @@ export default function Pokemoncard(props) {
 
   return (
     <div
-      className='pokemon-card'
+      className='pokemon-card-container'
       style={{
         backgroundImage:
           pokemon.types.length === 1
