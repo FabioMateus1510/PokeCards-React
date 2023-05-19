@@ -70,17 +70,14 @@ const Pokedex = (props) => {
         <div className='title-container'>
           <h1 className='title'>PokeCards</h1>
         </div>
-        <div className='batata'>
+        <div className='pagination-favorites-container'>
           <Pagination
             page={page + 1}
             totalPages={totalPages}
             onPrevClick={onPrevClickHandler}
             onNextClick={onNextClickHandler}
           />
-          <span
-            className='counter fav-name-color'
-            onClick={() => showFavorites()}
-          >
+          <span className='favorites-counter' onClick={() => showFavorites()}>
             {favoritePokemons.length}{' '}
             {favoritePokemons.length === 1 ? 'favorite' : 'favorites'}
           </span>
@@ -96,7 +93,7 @@ const Pokedex = (props) => {
           ></img>
         </div>
       ) : (
-        <div className='pokedex-grid'>
+        <div className='cards-container'>
           {showOnlyFavorites
             ? favoritePokemons.map((pokemon, index) => (
                 <Pokemoncard pokemon={pokemon} key={index} />
