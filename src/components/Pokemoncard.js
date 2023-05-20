@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import normalBackground from '../img/backgrounds/normalBackground.jpg';
 import fireBackground from '../img/backgrounds/fireBackground.jpg';
 import waterBackground from '../img/backgrounds/waterBackground.jpg';
@@ -88,9 +88,10 @@ export default function Pokemoncard(props) {
   const backgroundColor = getColorType(pokemon.types);
   const backgroundUrl = getBackgroundUrl(pokemon.types);
 
-  const changeBackground = () => {
+  const changeBackground = useCallback(() => {
     setBackgroundIndex((prevIndex) => (prevIndex + 1) % backgroundUrl.length);
-  };
+    console.log('pistolinha');
+  }, [backgroundUrl.length]);
 
   useEffect(() => {
     if (pokemon.types.length === 2) {
@@ -100,7 +101,7 @@ export default function Pokemoncard(props) {
         clearInterval(timer); // Limpa o temporizador quando o componente for desmontado
       };
     }
-  }, []);
+  }, [changeBackground, pokemon.types.length]);
 
   return (
     <div
@@ -164,7 +165,11 @@ export default function Pokemoncard(props) {
         </div>
         <div className='card-image'>
           <img
-            className='pokemon-img'
+            className={
+              pokemon.id <= 649
+                ? 'pokemon-img'
+                : 'pokemon-img pokemon-img-static'
+            }
             src={
               pokemon.id <= 649
                 ? pokemon['sprites']['versions']['generation-v']['black-white'][

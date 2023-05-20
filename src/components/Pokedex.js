@@ -46,7 +46,7 @@ const Pokedex = (props) => {
     [pokemons, selectedType, filteredByType]
   );
 
-  const applyTypeFilter = () => {
+  const applyTypeFilter = useCallback(() => {
     if (selectedType === 'all') {
       setFilteredByType(pokemons);
     } else {
@@ -55,7 +55,7 @@ const Pokedex = (props) => {
       );
       setFilteredByType(filteredByType);
     }
-  };
+  }, [selectedType, pokemons]);
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
@@ -80,7 +80,7 @@ const Pokedex = (props) => {
 
   useEffect(() => {
     applyTypeFilter();
-  }, [selectedType, pokemons]);
+  }, [selectedType, pokemons, applyTypeFilter]);
 
   return (
     <div className='pokedex'>
