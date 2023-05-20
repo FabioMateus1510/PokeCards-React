@@ -1,16 +1,17 @@
 import React, { useEffect, useContext, useState, useCallback } from 'react';
-
+import PropTypes from 'prop-types';
 import Pokemoncard from './Pokemoncard';
 import Pagination from './Pagination';
-import loadingCharizard from '../img/n1582570.gif';
+import Loading from './Loading';
 import FavoriteContext from '../contexts/favoriteContext';
+import Filters from './Filters';
+import Favorites from './Favorites';
 
 const Pokedex = (props) => {
   const [search, setSearch] = useState('');
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   const [selectedType, setSelectedType] = useState('all');
-  const { favoritePokemons, updateFavoritePokemons } =
-    useContext(FavoriteContext);
+  const { favoritePokemons } = useContext(FavoriteContext);
   const { pokemons, loading, page, setPage, totalPages } = props;
   const [filteredByType, setFilteredByType] = useState(pokemons);
   const [filteredByName, setFilteredByName] = useState(pokemons);
@@ -26,7 +27,7 @@ const Pokedex = (props) => {
     }
   };
 
-  const onChangeHandler = useCallback(
+  const handleSearchChange = useCallback(
     (e) => {
       const searchValue = e.target.value;
       setSearch(searchValue);
@@ -45,7 +46,7 @@ const Pokedex = (props) => {
     [pokemons, selectedType, filteredByType]
   );
 
-  const filterByType = () => {
+  const applyTypeFilter = () => {
     if (selectedType === 'all') {
       setFilteredByType(pokemons);
     } else {
@@ -65,49 +66,32 @@ const Pokedex = (props) => {
     setShowOnlyFavorites((prevShowOnlyFavorites) => !prevShowOnlyFavorites);
   }, []);
 
+  const pokemonList = showOnlyFavorites
+    ? favoritePokemons
+    : search
+    ? filteredByName
+    : filteredByType;
+
+  const pokemonKeyPrefix = showOnlyFavorites
+    ? 'fav'
+    : search
+    ? 'byName'
+    : 'byType';
+
   useEffect(() => {
-    filterByType();
+    applyTypeFilter();
   }, [selectedType, pokemons]);
 
   return (
     <div className='pokedex'>
       <div className='pokedex-header'>
-        <div className='filters'>
-          <input
-            className='searchbar'
-            value={search}
-            placeholder='Buscar'
-            onChange={onChangeHandler}
-          />
-          <select
-            className='types-option'
-            value={selectedType}
-            onChange={handleTypeChange}
-          >
-            <option value='all'>All</option>
-            <option value='normal'>Normal</option>
-            <option value='fire'>Fire</option>
-            <option value='water'>Water</option>
-            <option value='grass'>Grass</option>
-            <option value='electric'>Electric</option>
-            <option value='ice'>Ice</option>
-            <option value='fighting'>Fighting</option>
-            <option value='poison'>Poison</option>
-            <option value='ground'>Ground</option>
-            <option value='flying'>Flying</option>
-            <option value='psychic'>Psychic</option>
-            <option value='bug'>Bug</option>
-            <option value='rock'>Rock</option>
-            <option value='ghost'>Ghost</option>
-            <option value='dragon'>Dragon</option>
-            <option value='dark'>Dark</option>
-            <option value='steel'>Steel</option>
-            <option value='fairy'>Fairy</option>
-          </select>
-        </div>
-        <div className='title-container'>
-          <h1 className='title'>PokeCards</h1>
-        </div>
+        <Filters
+          selectedType={selectedType}
+          handleTypeChange={handleTypeChange}
+          search={search}
+          handleSearchChange={handleSearchChange}
+        />
+        <h1 className='title'>PokeCards</h1>
         <div className='pagination-favorites-container'>
           <Pagination
             page={page + 1}
@@ -115,38 +99,35 @@ const Pokedex = (props) => {
             onPrevClick={onPrevClickHandler}
             onNextClick={onNextClickHandler}
           />
-          <span className='favorites-counter' onClick={showFavorites}>
-            {favoritePokemons.length}{' '}
-            {favoritePokemons.length === 1 ? 'favorite' : 'favorites'}
-          </span>
+          <Favorites
+            showFavorites={showFavorites}
+            favoritePokemons={favoritePokemons}
+          />
         </div>
       </div>
 
       {loading ? (
-        <div className='loading-container'>
-          <img
-            className='loading'
-            src={loadingCharizard}
-            alt='charizard gif'
-          ></img>
-        </div>
+        <Loading />
       ) : (
         <div className='cards-container'>
-          {showOnlyFavorites
-            ? favoritePokemons.map((pokemon, index) => (
-                <Pokemoncard pokemon={pokemon} key={pokemon.id} />
-              ))
-            : search
-            ? filteredByName.map((pokemon, index) => (
-                <Pokemoncard pokemon={pokemon} key={pokemon.id} />
-              ))
-            : filteredByType.map((pokemon, index) => (
-                <Pokemoncard pokemon={pokemon} key={pokemon.id} />
-              ))}
+          {pokemonList.map((pokemon, index) => (
+            <Pokemoncard
+              pokemon={pokemon}
+              key={`${pokemon.id}-${pokemonKeyPrefix}`}
+            />
+          ))}
         </div>
       )}
     </div>
   );
+};
+
+Pokedex.propTypes = {
+  pokemons: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  page: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
+  totalPages: PropTypes.number.isRequired,
 };
 
 export default Pokedex;

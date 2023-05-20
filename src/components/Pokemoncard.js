@@ -28,24 +28,24 @@ export default function Pokemoncard(props) {
 
   const getBackgroundUrl = (tipos) => {
     const typeToImage = {
-      normal: normalBackground,
-      fire: fireBackground,
-      water: waterBackground,
-      grass: grassBackground,
-      electric: electricBackground,
-      ice: iceBackground,
-      fighting: fightingBackground,
-      poison: poisonBackground,
-      ground: groundBackground,
-      flying: flyingBackground,
-      psychic: psychicBackground,
       bug: bugBackground,
-      rock: rockBackground,
-      ghost: ghostBackground,
-      dragon: dragonBackground,
       dark: darkBackground,
+      dragon: dragonBackground,
+      electric: electricBackground,
       fairy: fairyBackground,
+      fighting: fightingBackground,
+      fire: fireBackground,
+      flying: flyingBackground,
+      ghost: ghostBackground,
+      grass: grassBackground,
+      ground: groundBackground,
+      ice: iceBackground,
+      normal: normalBackground,
+      poison: poisonBackground,
+      psychic: psychicBackground,
+      rock: rockBackground,
       steel: steelBackground,
+      water: waterBackground,
     };
     return tipos.map((tipo) => typeToImage[tipo.type.name]);
   };
@@ -54,23 +54,24 @@ export default function Pokemoncard(props) {
     const opacity = 0.7;
 
     const tipoCores = {
-      normal: `rgba(245, 245, 220, ${opacity})`,
-      fire: `rgba(255, 0, 0, ${opacity})`,
-      water: `rgba(64, 224, 208, ${opacity})`,
-      grass: `rgba(0, 174, 0, ${opacity})`,
-      electric: `rgba(255, 255, 0, ${opacity})`,
-      ice: `rgba(225, 231, 228, ${opacity})`,
-      fighting: `rgba(255, 140, 0, ${opacity})`,
-      poison: `rgba(198, 84, 255, ${opacity})`,
-      ground: `rgba(149, 95, 62, ${opacity})`,
-      flying: `rgba(0, 136, 255, ${opacity})`,
-      psychic: `rgba(255, 192, 203, ${opacity})`,
       bug: `rgba(0, 255, 0, ${opacity})`,
-      rock: `rgba(139, 139, 139, ${opacity})`,
-      ghost: `rgba(238, 130, 238, ${opacity})`,
-      dragon: `rgba(243, 78, 78, ${opacity})`,
       dark: `rgba(0, 0, 0, ${opacity})`,
+      dragon: `rgba(243, 78, 78, ${opacity})`,
+      electric: `rgba(255, 255, 0, ${opacity})`,
       fairy: `rgba(253, 117, 237, ${opacity})`,
+      fighting: `rgba(255, 140, 0, ${opacity})`,
+      fire: `rgba(255, 0, 0, ${opacity})`,
+      flying: `rgba(0, 136, 255, ${opacity})`,
+      ghost: `rgba(238, 130, 238, ${opacity})`,
+      grass: `rgba(0, 174, 0, ${opacity})`,
+      ground: `rgba(149, 95, 62, ${opacity})`,
+      ice: `rgba(225, 231, 228, ${opacity})`,
+      normal: `rgba(245, 245, 220, ${opacity})`,
+      poison: `rgba(198, 84, 255, ${opacity})`,
+      psychic: `rgba(255, 192, 203, ${opacity})`,
+      rock: `rgba(139, 139, 139, ${opacity})`,
+      steel: `rgba(96, 96, 96, ${opacity})`,
+      water: `rgba(64, 224, 208, ${opacity})`,
     };
     const colors = tipos.map((tipo) => tipoCores[tipo.type.name]);
     return colors.length === 1
@@ -145,14 +146,17 @@ export default function Pokemoncard(props) {
             style={{ background: backgroundColor }}
           >
             {pokemon.types.map((element, index) => (
-              <span className='info-type' key={index}>
+              <span className='info-type' key={`${index}${element.type.name}`}>
                 {element.type.name}
               </span>
             ))}
           </div>
           <div className='card-info-abilities'>
             {pokemon.abilities.map((element, index) => (
-              <span className='info-ability' key={index}>
+              <span
+                className='info-ability'
+                key={`${index}${element.ability.name}`}
+              >
                 {element.ability.name.replace('-', ' ')}
               </span>
             ))}

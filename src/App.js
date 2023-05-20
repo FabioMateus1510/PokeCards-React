@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
 import Pokedex from './components/Pokedex';
 import { FavoriteProvider } from './contexts/favoriteContext';
 import { getAllPokemons } from './api';
