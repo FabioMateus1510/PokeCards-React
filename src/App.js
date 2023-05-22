@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import 'simplebar-react/dist/simplebar.min.css';
 import './App.css';
 import Pokedex from './components/Pokedex';
 import { FavoriteProvider } from './contexts/favoriteContext';
@@ -12,7 +13,7 @@ function App() {
   const [favorites, setFavorites] = useState([]);
 
   const itensPerPage = 252;
-  const fetchPokemons = async () => {
+  const fetchPokemons = useCallback(async () => {
     try {
       setLoading(true);
       const result = await getAllPokemons(itensPerPage, itensPerPage * page);
@@ -22,11 +23,11 @@ function App() {
     } catch (error) {
       console.log('fetchPokemons error: ', error);
     }
-  };
+  }, [page]);
 
   useEffect(() => {
     fetchPokemons();
-  }, [page]);
+  }, [fetchPokemons]);
 
   const updateFavoritePokemons = (name) => {
     const updatedFavorites = [...favorites];

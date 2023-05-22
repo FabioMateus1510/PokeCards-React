@@ -6,6 +6,7 @@ import Loading from './Loading';
 import FavoriteContext from '../contexts/favoriteContext';
 import Filters from './Filters';
 import Favorites from './Favorites';
+import SimpleBar from 'simplebar-react';
 
 const Pokedex = (props) => {
   const [search, setSearch] = useState('');
@@ -109,14 +110,16 @@ const Pokedex = (props) => {
       {loading ? (
         <Loading />
       ) : (
-        <div className='cards-container'>
-          {pokemonList.map((pokemon, index) => (
-            <Pokemoncard
-              pokemon={pokemon}
-              key={`${pokemon.id}-${pokemonKeyPrefix}`}
-            />
-          ))}
-        </div>
+        <SimpleBar forceVisible='y' autoHide={false} style={{ maxHeight: 763 }}>
+          <div className='cards-container'>
+            {pokemonList.map((pokemon, index) => (
+              <Pokemoncard
+                pokemon={pokemon}
+                key={`${pokemon.id}-${pokemonKeyPrefix}`}
+              />
+            ))}
+          </div>
+        </SimpleBar>
       )}
     </div>
   );

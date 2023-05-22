@@ -9,8 +9,7 @@
 }
 
 body {
-  height: 105vh;
-
+  height: 100vh;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     to bottom,
@@ -18,6 +17,7 @@ body {
     rgb(11, 41, 142) 35%,
     rgb(17, 194, 230) 100%
   );
+  overflow: hidden;
   /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
 }
 
@@ -27,7 +27,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 72%;
-  margin: 40px auto 0 auto;
+  margin: 40px auto 40px auto;
   padding: 10px;
 }
 
@@ -137,20 +137,21 @@ body {
 
 .cards-container {
   display: flex;
-  justify-content: center;
+  /* justify-content: flex-start; */
   align-content: flex-start;
   gap: 18px;
   flex-wrap: wrap;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  /* overflow: auto; */
+  /* overflow-y: scroll; */
   height: 75vh;
   width: 80%;
-  padding-top: 30px;
-  margin: 30px auto 0 auto;
+  /* padding: 30px 0px; */
+  /* padding-bottom: 130px; */
+  margin: 0px auto 0px auto;
 }
 
 /* Mozilla Firefox */
-.cards-container scrollbar {
+/* .cards-container scrollbar {
   width: 20px;
   background-color: transparent;
 }
@@ -160,24 +161,24 @@ body {
   border-radius: 50%;
   background-color: #000;
   background-repeat: no-repeat;
-}
+} */
 
 /* Webkit browsers (Safari, Google Chrome) */
-.cards-container::-webkit-scrollbar {
-  /* background-color: blue; */
+/* .cards-container::-webkit-scrollbar {
+  background-color: blue;
   width: 1.7vw;
   height: 30px;
-}
+} */
 
-.cards-container::-webkit-scrollbar-thumb {
+/* .cards-container::-webkit-scrollbar-thumb {
   background-image: url('./img/pokeballScroll5.png');
   background-size: cover;
   background-repeat: no-repeat;
   height: 30px;
-}
+} */
 
 /* Internet Explorer / Edge */
-.cards-container {
+/* .cards-container {
   scrollbar-face-color: transparent;
   scrollbar-track-color: transparent;
   scrollbar-base-color: transparent;
@@ -188,7 +189,7 @@ body {
   background-repeat: no-repeat;
   border-radius: 50%;
   height: 20px;
-}
+} */
 
 .pokemon-card-container {
   cursor: pointer;
@@ -201,7 +202,7 @@ body {
   box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.4);
   transition: transform 0.5s ease-in-out, box-shadow 0.3s ease-in-out,
     background-image 1.5s ease-in;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .pokemon-card-container:hover {
@@ -337,4 +338,24 @@ body {
 
 .fav-name-color {
   color: rgb(227, 122, 2);
+}
+
+.simplebar-scrollbar::before {
+  background: rgba(255, 255, 255, 0.606);
+}
+
+/* .simplebar-content {
+  margin-top: 20px;
+} */
+
+.simplebar-content-wrapper {
+  padding: 20px 0 20px 0;
+}
+
+.simplebar-track {
+  right: 12vw; /* Ajuste a posição horizontal da scrollbar */
+  /* top: 15vw;  */
+  /* width: 8px; Ajuste a largura da scrollbar */
+  /* background-color: #f0f0f0; Cor de fundo da scrollbar */
+  /* border-radius: 4px; Raio de borda da scrollbar */
 }
