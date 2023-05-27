@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PokeCards-react/static/css/main.d36e91ba.css",
-    "main.js": "/PokeCards-react/static/js/main.686e9283.js",
+    "main.css": "/PokeCards-react/static/css/main.71ab69fc.css",
+    "main.js": "/PokeCards-react/static/js/main.cb0ef31d.js",
     "static/js/787.7e0b23c5.chunk.js": "/PokeCards-react/static/js/787.7e0b23c5.chunk.js",
     "static/media/psychicBackground.gif": "/PokeCards-react/static/media/psychicBackground.48cbf0da3a4877caa61d.gif",
     "static/media/n1582570.gif": "/PokeCards-react/static/media/n1582570.5c4997bf44264ed2b460.gif",
@@ -19,16 +19,17 @@
     "static/media/normalBackground.jpg": "/PokeCards-react/static/media/normalBackground.d3f2874f7b14233ea86e.jpg",
     "static/media/fightingBackground.jpg": "/PokeCards-react/static/media/fightingBackground.da83a92f88dc91597e8d.jpg",
     "static/media/electricBackground.jpg": "/PokeCards-react/static/media/electricBackground.53b66df3e10e1bd557e4.jpg",
+    "static/media/bluePokeball.png": "/PokeCards-react/static/media/bluePokeball.9daa3947632ff6f69e3f.png",
     "static/media/rockBackground.jpg": "/PokeCards-react/static/media/rockBackground.801c366e10a0c4ee87c8.jpg",
     "static/media/groundBackground.jpg": "/PokeCards-react/static/media/groundBackground.d4d9cfe674a472738613.jpg",
     "static/media/flyingBackground.jpg": "/PokeCards-react/static/media/flyingBackground.82f026558bdf39bc7108.jpg",
     "index.html": "/PokeCards-react/index.html",
-    "main.d36e91ba.css.map": "/PokeCards-react/static/css/main.d36e91ba.css.map",
-    "main.686e9283.js.map": "/PokeCards-react/static/js/main.686e9283.js.map",
+    "main.71ab69fc.css.map": "/PokeCards-react/static/css/main.71ab69fc.css.map",
+    "main.cb0ef31d.js.map": "/PokeCards-react/static/js/main.cb0ef31d.js.map",
     "787.7e0b23c5.chunk.js.map": "/PokeCards-react/static/js/787.7e0b23c5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d36e91ba.css",
-    "static/js/main.686e9283.js"
+    "static/css/main.71ab69fc.css",
+    "static/js/main.cb0ef31d.js"
   ]
 }
