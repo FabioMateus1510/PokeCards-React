@@ -1,12 +1,13 @@
 import React, { useEffect, useContext, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import Pokemoncard from './Pokemoncard';
+import PokemonCard from './PokemonCard';
 import Pagination from './Pagination';
 import Loading from './Loading';
 import FavoriteContext from '../contexts/favoriteContext';
 import Filters from './Filters';
 import Favorites from './Favorites';
 import SimpleBar from 'simplebar-react';
+import PokedexCSS from '../css/Pokedex.css';
 
 const Pokedex = (props) => {
   const [search, setSearch] = useState('');
@@ -113,7 +114,7 @@ const Pokedex = (props) => {
         <SimpleBar forceVisible='y' autoHide={false} style={{ maxHeight: 763 }}>
           <div className='cards-container'>
             {pokemonList.map((pokemon, index) => (
-              <Pokemoncard
+              <PokemonCard
                 pokemon={pokemon}
                 key={`${pokemon.id}-${pokemonKeyPrefix}`}
               />

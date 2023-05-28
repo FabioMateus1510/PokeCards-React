@@ -3,7 +3,8 @@ import 'simplebar-react/dist/simplebar.min.css';
 import './App.css';
 import Pokedex from './components/Pokedex';
 import { FavoriteProvider } from './contexts/favoriteContext';
-import { getAllPokemons } from './api';
+// import { getAllPokemons } from './api';
+import { fetchAllPokemonData } from './pokeapi';
 
 function App() {
   const [page, setPage] = useState(0);
@@ -13,10 +14,28 @@ function App() {
   const [favorites, setFavorites] = useState([]);
 
   const itensPerPage = 252;
+  // const fetchPokemons = useCallback(async () => {
+  //   try {
+  //     setLoading(true);
+  //     const result = await getAllPokemons(itensPerPage, itensPerPage * page);
+  //     setPokemons(result);
+  //     setLoading(false);
+  // setTotalPages(Math.ceil(1008 / itensPerPage));
+  //   } catch (error) {
+  //     console.log('fetchPokemons error: ', error);
+  //   }
+  // }, [page]);
+
+  // useEffect(() => {
+  //   fetchPokemons();
+  // }, [fetchPokemons]);
   const fetchPokemons = useCallback(async () => {
     try {
       setLoading(true);
-      const result = await getAllPokemons(itensPerPage, itensPerPage * page);
+      const result = await fetchAllPokemonData(
+        itensPerPage * page,
+        itensPerPage
+      );
       setPokemons(result);
       setLoading(false);
       setTotalPages(Math.ceil(1008 / itensPerPage));

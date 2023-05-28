@@ -1,6 +1,7 @@
 import React from 'react';
 import prevButton from '../img/prev2.png';
 import nextButton from '../img/next2.png';
+import PaginationCSS from '../css/Pagination.css';
 
 export default function Pagination(props) {
   const { page, totalPages, onPrevClick, onNextClick } = props;
