@@ -1,0 +1,28 @@
+.card-header {
+  font-size: 1.2vw;
+  height: 18%;
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  /* border-radius: 8px 8px 0px 0px; */
+  padding: 0px 17.5px;
+  border-radius: 9px 9px 0 0;
+}
+
+.card-header span {
+  text-transform: capitalize;
+  font-family: 'Oxanium', cursive;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.favorite-icon {
+  width: 0.87vw;
+  margin-left: 5px;
+}
+
+.fav-name-color {
+  color: rgb(227, 122, 2);
+}

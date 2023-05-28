@@ -1,0 +1,77 @@
+.face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.back {
+  position: relative;
+  /* background: linear-gradient(90deg, #35acfe 48%, rgb(208, 208, 208) 54%); */
+  background: rgb(0, 0, 0);
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.back-card-body {
+  height: 70%;
+  padding-top: 20px;
+  background: rgb(117, 117, 117);
+  background: radial-gradient(
+    circle,
+    rgb(121, 121, 121) 1%,
+    rgba(255, 255, 255, 1) 45%,
+    rgb(1, 98, 159) 46%
+  );
+  border-radius: 0 0 7px 7px;
+}
+
+.info-stats {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 80%;
+  flex-wrap: wrap;
+  margin-left: 12px;
+  gap: 7px;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.stat-bar {
+  display: block;
+  content: '';
+  background: rgb(255, 149, 0);
+  /* background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 30%,
+      rgba(255, 255, 255, 0) 30%
+    ); */
+  width: 60px;
+  height: 5px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 35%;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  padding: 3px;
+}
+
+.stat span {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7vw;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.bluePokeball {
+  position: absolute;
+  top: 43%;
+  right: 43%;
+  width: 13%;
+}

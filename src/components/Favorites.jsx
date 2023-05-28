@@ -1,4 +1,5 @@
 import React from 'react';
+import FavoritesCSS from '../css/Favorites.css';
 
 export default function Favorites(props) {
   const { showFavorites, favoritePokemons } = props;

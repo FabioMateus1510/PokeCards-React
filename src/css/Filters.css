@@ -1,0 +1,41 @@
+.filters {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 12%;
+  height: 75px;
+
+  /* background-color: red; */
+}
+
+.types-option {
+  background-color: rgb(0, 157, 255);
+  width: 113.5%;
+  height: 35%;
+  border-radius: 5px;
+  text-align: center;
+  border: 1.5px solid white;
+}
+
+.types-option option {
+  color: white;
+}
+
+.searchbar {
+  border: 1px solid white;
+  color: white;
+  border-radius: 10px;
+  background-color: transparent;
+  height: 35%;
+  /* padding: 7px; */
+  width: 109%;
+  font-size: 17px;
+}
+
+.searchbar::placeholder {
+  text-align: center;
+  color: white;
+  font-size: 0.92vw;
+}

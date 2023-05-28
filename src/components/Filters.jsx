@@ -1,4 +1,5 @@
 import React from 'react';
+import FiltersCSS from '../css/Filters.css';
 
 const Filters = (props) => {
   const { search, handleSearchChange, selectedType, handleTypeChange } = props;

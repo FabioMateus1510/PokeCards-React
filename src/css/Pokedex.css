@@ -1,0 +1,74 @@
+.pokedex-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 72%;
+  margin: 40px auto 40px auto;
+  padding: 10px;
+}
+
+:root {
+  --text-shadow-offset: 3px;
+  --text-shadow-color: #0a68c1;
+}
+
+.title {
+  font-size: 2.5vw;
+  cursor: pointer;
+  text-shadow: var(--text-shadow-offset) var(--text-shadow-offset) 0
+      var(--text-shadow-color),
+    var(--text-shadow-offset) calc(-1 * var(--text-shadow-offset)) 0
+      var(--text-shadow-color),
+    calc(-1 * var(--text-shadow-offset)) var(--text-shadow-offset) 0
+      var(--text-shadow-color),
+    calc(-1 * var(--text-shadow-offset)) calc(-1 * var(--text-shadow-offset)) 0
+      var(--text-shadow-color),
+    var(--text-shadow-offset) 0 0 var(--text-shadow-color),
+    0 var(--text-shadow-offset) 0 var(--text-shadow-color),
+    calc(-1 * var(--text-shadow-offset)) 0 0 var(--text-shadow-color),
+    0 calc(-1 * var(--text-shadow-offset)) 0 var(--text-shadow-color),
+    var(--text-shadow-offset) var(--text-shadow-offset)
+      var(--text-shadow-offset) rgba(35, 99, 206, 0);
+}
+
+.cards-container {
+  display: flex;
+  align-content: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  height: 75vh;
+  width: 80%;
+  margin: 0px auto 0px auto;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* opcional, define a altura da div para preencher a tela inteira */
+}
+
+.loading {
+  width: 200px;
+}
+
+.simplebar-scrollbar::before {
+  background: rgba(255, 255, 255, 0.606);
+}
+
+/* .simplebar-content {
+    margin-top: 20px;
+  } */
+
+.simplebar-content-wrapper {
+  padding: 7px 0;
+}
+
+.simplebar-track {
+  right: 12vw; /* Ajuste a posição horizontal da scrollbar */
+  /* top: 15vw;  */
+  /* width: 8px; Ajuste a largura da scrollbar */
+  /* background-color: #f0f0f0; Cor de fundo da scrollbar */
+  /* border-radius: 4px; Raio de borda da scrollbar */
+}

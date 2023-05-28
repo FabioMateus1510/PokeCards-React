@@ -1,0 +1,22 @@
+.pagination-container button {
+  background: transparent;
+  border: none;
+  margin: 5px;
+}
+
+.pagination-container {
+  font-size: 0.87vw;
+}
+
+.arrow-button {
+  width: 1.35vw;
+  cursor: pointer;
+}
+
+.pagination-favorites-container {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
