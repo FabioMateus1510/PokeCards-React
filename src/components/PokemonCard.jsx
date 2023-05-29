@@ -14,6 +14,7 @@ export default function Pokemoncard(props) {
 
   return (
     <div className={fliped ? 'pokemon-card rotated-card' : 'pokemon-card'}>
+      {/* <div className='pokemon-card'> */}
       <CardFrontFace pokemon={pokemon} cardFlipHandle={cardFlipHandle} />
       <CardBackFace pokemon={pokemon} cardFlipHandle={cardFlipHandle} />
     </div>

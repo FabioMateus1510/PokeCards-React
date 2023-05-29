@@ -19,10 +19,34 @@
 }
 
 .favorite-icon {
-  width: 0.87vw;
+  cursor: pointer;
+
+  width: 0.9vw;
   margin-left: 5px;
+}
+.favorite-icon:hover {
+  transform: scale(1.1);
 }
 
 .fav-name-color {
   color: rgb(227, 122, 2);
+}
+
+.flip-icon {
+  cursor: pointer;
+  width: 1.3vw;
+  margin-bottom: 3px;
+  margin-right: 5px;
+}
+
+.flip-icon:hover {
+  transform: scale(1.08);
+}
+
+.flip-id-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: red; */
+  /* width: 4.2vw; */
 }
