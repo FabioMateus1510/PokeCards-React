@@ -6,6 +6,22 @@ import CardFrontFaceCSS from '../css/CardFrontFace.css';
 export default function CardFrontFace(props) {
   const { pokemon, cardFlipHandle } = props;
   const [backgroundIndex, setBackgroundIndex] = useState(0);
+  const [gifIndex, setGifIndex] = useState(0);
+
+  const pokemonGifs = [
+    pokemon['sprites']['versions']['generation-v']['black-white']['animated'][
+      'front_default'
+    ],
+    pokemon['sprites']['versions']['generation-v']['black-white']['animated'][
+      'front_shiny'
+    ],
+    pokemon['sprites']['versions']['generation-v']['black-white']['animated'][
+      'back_default'
+    ],
+    pokemon['sprites']['versions']['generation-v']['black-white']['animated'][
+      'back_shiny'
+    ],
+  ];
 
   const getBackgroundUrl = (tipos) => {
     return tipos.map((tipo) => typeToImage[tipo.type.name]);
@@ -24,6 +40,10 @@ export default function CardFrontFace(props) {
   const changeBackground = useCallback(() => {
     setBackgroundIndex((prevIndex) => (prevIndex + 1) % backgroundUrl.length);
   }, [backgroundUrl.length]);
+
+  const changeGif = useCallback(() => {
+    setGifIndex((prevIndex) => (prevIndex + 1) % pokemonGifs.length);
+  }, [pokemonGifs.length]);
 
   useEffect(() => {
     if (pokemon.types.length === 2) {
@@ -45,8 +65,8 @@ export default function CardFrontFace(props) {
             : `url(${backgroundUrl[backgroundIndex]})`,
       }}
     >
-      <CardHeader pokemon={pokemon} />
-      <div className='card-body' onClick={cardFlipHandle}>
+      <CardHeader pokemon={pokemon} cardFlipHandle={cardFlipHandle} />
+      <div className='card-body'>
         <div className='card-info'>
           <div className='card-info-weigth-heigth '>
             {pokemon.weight / 10 > 1 ? (
@@ -86,6 +106,7 @@ export default function CardFrontFace(props) {
         </div>
         <div className='card-image'>
           <img
+            onClick={changeGif}
             className={
               pokemon.id <= 649
                 ? 'pokemon-img'
@@ -93,9 +114,7 @@ export default function CardFrontFace(props) {
             }
             src={
               pokemon.id <= 649
-                ? pokemon['sprites']['versions']['generation-v']['black-white'][
-                    'animated'
-                  ]['front_default']
+                ? pokemonGifs[gifIndex]
                 : pokemon['sprites']['front_default']
             }
             alt={pokemon.name}

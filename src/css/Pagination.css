@@ -13,6 +13,10 @@
   cursor: pointer;
 }
 
+.arrow-button:hover {
+  transform: scale(1.1);
+}
+
 .pagination-favorites-container {
   height: 80px;
   display: flex;

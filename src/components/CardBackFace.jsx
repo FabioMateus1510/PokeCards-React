@@ -26,8 +26,8 @@ export default function CardBackFace(props) {
 
   return (
     <div className='back face'>
-      <CardHeader pokemon={pokemon} />
-      <div className='back-card-body' onClick={cardFlipHandle}>
+      <CardHeader pokemon={pokemon} cardFlipHandle={cardFlipHandle} />
+      <div className='back-card-body'>
         <img
           className='bluePokeball'
           src={bluePokeball}
