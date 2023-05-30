@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PokeCards-react/static/css/main.7bf409ad.css",
-    "main.js": "/PokeCards-react/static/js/main.509bd1fa.js",
+    "main.css": "/PokeCards-react/static/css/main.3f10f6aa.css",
+    "main.js": "/PokeCards-react/static/js/main.fa45a74f.js",
     "static/js/787.7e0b23c5.chunk.js": "/PokeCards-react/static/js/787.7e0b23c5.chunk.js",
     "static/media/psychicBackground.gif": "/PokeCards-react/static/media/psychicBackground.48cbf0da3a4877caa61d.gif",
     "static/media/n1582570.gif": "/PokeCards-react/static/media/n1582570.5c4997bf44264ed2b460.gif",
@@ -24,12 +24,12 @@
     "static/media/groundBackground.jpg": "/PokeCards-react/static/media/groundBackground.d4d9cfe674a472738613.jpg",
     "static/media/flyingBackground.jpg": "/PokeCards-react/static/media/flyingBackground.82f026558bdf39bc7108.jpg",
     "index.html": "/PokeCards-react/index.html",
-    "main.7bf409ad.css.map": "/PokeCards-react/static/css/main.7bf409ad.css.map",
-    "main.509bd1fa.js.map": "/PokeCards-react/static/js/main.509bd1fa.js.map",
+    "main.3f10f6aa.css.map": "/PokeCards-react/static/css/main.3f10f6aa.css.map",
+    "main.fa45a74f.js.map": "/PokeCards-react/static/js/main.fa45a74f.js.map",
     "787.7e0b23c5.chunk.js.map": "/PokeCards-react/static/js/787.7e0b23c5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7bf409ad.css",
-    "static/js/main.509bd1fa.js"
+    "static/css/main.3f10f6aa.css",
+    "static/js/main.fa45a74f.js"
   ]
 }
