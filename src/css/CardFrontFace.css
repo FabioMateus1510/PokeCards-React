@@ -12,12 +12,10 @@
   background-position: center;
   transition: background-image 1.5s ease-in;
   backface-visibility: hidden; /* retirar dps */
-
-  /* backface-visibility: hidden; */
 }
 
 .card-body {
-  font-size: 0.6vw;
+  font-size: 0.9vw;
   width: 97.8%;
   height: 79%;
   display: flex;
@@ -39,7 +37,6 @@
 .card-info span {
   text-transform: capitalize;
   font-family: 'Oswald', sans-serif;
-  font-size: 15px;
   font-weight: 400;
   letter-spacing: 1px;
 }
@@ -62,21 +59,15 @@
 
 .card-info-types {
   display: flex;
+  justify-content: space-around;
   align-items: center;
   width: 62%;
   height: 20%;
-  text-align: center;
   border-radius: 10px;
-}
-
-.info-type {
-  width: 100%;
-  height: 100%;
 }
 
 .card-info-abilities {
   display: flex;
-  align-items: center;
   width: 200%;
   height: 20%;
 }
@@ -84,13 +75,11 @@
 .info-ability {
   display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
   width: 31.5%;
-  height: 100%;
   z-index: 1;
   margin-right: 10px;
   background-color: rgba(0, 0, 0, 0.5);
-  /* padding: 4px 0px; */
   border-radius: 10px;
 }
 
@@ -115,4 +104,25 @@
 .pokemon-img-static {
   width: 90%;
   margin-top: 10%;
+}
+
+@media (max-width: 480px) {
+  .card-body {
+    font-size: 3vw;
+  }
+  .card-image {
+    width: 30%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .card-body {
+    font-size: 1.5vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1000px) {
+  .card-body {
+    font-size: 1vw;
+  }
 }

@@ -13,7 +13,7 @@ function App() {
   const [pokemons, setPokemons] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
-  const itensPerPage = 252;
+  const itensPerPage = 336;
   // const fetchPokemons = useCallback(async () => {
   //   try {
   //     setLoading(true);
@@ -71,6 +71,7 @@ function App() {
         <Pokedex
           pokemons={pokemons}
           loading={loading}
+          setLoading={setLoading}
           page={page}
           setPage={setPage}
           totalPages={totalPages}

@@ -50,3 +50,30 @@
   /* background-color: red; */
   /* width: 4.2vw; */
 }
+
+@media (max-width: 480px) {
+  .card-header {
+    font-size: 4vw;
+  }
+  .favorite-icon {
+    width: 3.4vw;
+  }
+  .flip-icon {
+    width: 4vw;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .card-header {
+    font-size: 1.9vw;
+  }
+  .favorite-icon {
+    width: 1.3vw;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1000px) {
+  .card-header {
+    font-size: 1.5vw;
+  }
+}

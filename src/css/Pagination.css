@@ -1,15 +1,19 @@
 .pagination-container button {
   background: transparent;
   border: none;
-  margin: 5px;
 }
 
 .pagination-container {
-  font-size: 0.87vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8vw;
+  width: 100%;
+  /* background-color: blue; */
 }
 
 .arrow-button {
-  width: 1.35vw;
+  width: 1.2vw;
   cursor: pointer;
 }
 
@@ -18,9 +22,30 @@
 }
 
 .pagination-favorites-container {
-  height: 80px;
+  height: 3.2vw;
+  width: 15%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+
+  /* background-color: red; */
+}
+
+@media (max-width: 480px) {
+  .pokemon-card {
+    width: 90%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .pokemon-card {
+    width: 60%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1000px) {
+  .pokemon-card {
+    width: 45%;
+  }
 }

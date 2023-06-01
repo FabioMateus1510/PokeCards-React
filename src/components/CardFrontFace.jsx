@@ -6,7 +6,7 @@ import CardFrontFaceCSS from '../css/CardFrontFace.css';
 export default function CardFrontFace(props) {
   const { pokemon, cardFlipHandle } = props;
   const [backgroundIndex, setBackgroundIndex] = useState(0);
-  const [gifIndex, setGifIndex] = useState(0);
+  const [pokemonImgIndex, setPokemonImgIndex] = useState(0);
 
   const pokemonGifs = [
     pokemon['sprites']['versions']['generation-v']['black-white']['animated'][
@@ -21,6 +21,12 @@ export default function CardFrontFace(props) {
     pokemon['sprites']['versions']['generation-v']['black-white']['animated'][
       'back_shiny'
     ],
+  ];
+  const pokemonStatic = [
+    pokemon['sprites']['front_default'],
+    pokemon['sprites']['front_shiny'],
+    pokemon['sprites']['back_default'],
+    pokemon['sprites']['back_shiny'],
   ];
 
   const getBackgroundUrl = (tipos) => {
@@ -41,8 +47,8 @@ export default function CardFrontFace(props) {
     setBackgroundIndex((prevIndex) => (prevIndex + 1) % backgroundUrl.length);
   }, [backgroundUrl.length]);
 
-  const changeGif = useCallback(() => {
-    setGifIndex((prevIndex) => (prevIndex + 1) % pokemonGifs.length);
+  const changePokemonImg = useCallback(() => {
+    setPokemonImgIndex((prevIndex) => (prevIndex + 1) % pokemonGifs.length);
   }, [pokemonGifs.length]);
 
   useEffect(() => {
@@ -106,7 +112,7 @@ export default function CardFrontFace(props) {
         </div>
         <div className='card-image'>
           <img
-            onClick={changeGif}
+            onClick={changePokemonImg}
             className={
               pokemon.id <= 649
                 ? 'pokemon-img'
@@ -114,8 +120,8 @@ export default function CardFrontFace(props) {
             }
             src={
               pokemon.id <= 649
-                ? pokemonGifs[gifIndex]
-                : pokemon['sprites']['front_default']
+                ? pokemonGifs[pokemonImgIndex]
+                : pokemonStatic[pokemonImgIndex]
             }
             alt={pokemon.name}
           />

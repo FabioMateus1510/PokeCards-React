@@ -13,10 +13,38 @@ const Pokedex = (props) => {
   const [search, setSearch] = useState('');
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   const [selectedType, setSelectedType] = useState('all');
+  const [selectedGeneration, setSelectedGeneration] = useState('all');
   const { favoritePokemons } = useContext(FavoriteContext);
-  const { pokemons, loading, page, setPage, totalPages } = props;
+  const { pokemons, loading, page, setPage, totalPages, setLoading } = props;
   const [filteredByType, setFilteredByType] = useState(pokemons);
   const [filteredByName, setFilteredByName] = useState(pokemons);
+
+  const generations = [
+    { generation: 'Gen I', minID: 1, maxID: 151 },
+    { generation: 'Gen II', minID: 152, maxID: 251 },
+    { generation: 'Gen III', minID: 252, maxID: 386 },
+    { generation: 'Gen IV', minID: 387, maxID: 493 },
+    { generation: 'Gen V', minID: 494, maxID: 649 },
+    { generation: 'Gen VI', minID: 650, maxID: 721 },
+    { generation: 'Gen VII', minID: 722, maxID: 809 },
+    { generation: 'Gen VIII', minID: 810, maxID: 898 },
+  ];
+
+  // const applyGenerationFilter = useCallback(() => {
+  //   if (selectedGeneration === 'all' || selectedGeneration === 'Generation') {
+  //     setFilteredByGeneration(pokemons);
+  //   } else {
+  //     const generation = generations.find(
+  //       (gen) => gen.generation === selectedGeneration
+  //     );
+  //     console.log(generation);
+  //     const filteredByGeneration = pokemons.filter(
+  //       (pokemon) =>
+  //         pokemon.id >= generation.minID && pokemon.id <= generation.maxID
+  //     );
+  //     setFilteredByGeneration(filteredByGeneration);
+  //   }
+  // }, [pokemons, selectedGeneration]);
 
   const onPrevClickHandler = () => {
     if (page > 0) {
@@ -34,7 +62,7 @@ const Pokedex = (props) => {
       const searchValue = e.target.value;
       setSearch(searchValue);
       let filteredByName;
-      if (selectedType === 'all') {
+      if (selectedType === 'all' || selectedType === 'Type') {
         filteredByName = pokemons.filter((pokemon) =>
           pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
         );
@@ -49,15 +77,35 @@ const Pokedex = (props) => {
   );
 
   const applyTypeFilter = useCallback(() => {
-    if (selectedType === 'all') {
+    // setLoading(true);
+    console.log('estou aqui');
+    let filteredByType = pokemons;
+    if (selectedType === 'all' && selectedGeneration === 'all') {
       setFilteredByType(pokemons);
     } else {
-      const filteredByType = pokemons.filter((pokemon) =>
-        pokemon.types.some((type) => type.type.name === selectedType)
-      );
+      if (selectedGeneration !== 'all') {
+        const generation = generations.find(
+          (gen) => gen.generation === selectedGeneration
+        );
+        filteredByType = filteredByType.filter(
+          (pokemon) =>
+            pokemon.id >= generation.minID && pokemon.id <= generation.maxID
+        );
+      }
+      if (selectedType !== 'all') {
+        filteredByType = filteredByType.filter((pokemon) =>
+          pokemon.types.some((type) => type.type.name === selectedType)
+        );
+      }
       setFilteredByType(filteredByType);
+      // setLoading(false);
     }
-  }, [selectedType, pokemons]);
+  }, [selectedType, pokemons, selectedGeneration, generations]);
+
+  const handleGenerationChange = (event) => {
+    setSelectedGeneration(event.target.value);
+    setSearch('');
+  };
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
@@ -82,14 +130,16 @@ const Pokedex = (props) => {
 
   useEffect(() => {
     applyTypeFilter();
-  }, [selectedType, pokemons, applyTypeFilter]);
+  }, [selectedType, pokemons, applyTypeFilter, selectedGeneration]);
 
   return (
     <div className='pokedex'>
       <div className='pokedex-header'>
         <Filters
           selectedType={selectedType}
+          selectedGeneration={selectedGeneration}
           handleTypeChange={handleTypeChange}
+          handleGenerationChange={handleGenerationChange}
           search={search}
           handleSearchChange={handleSearchChange}
         />
