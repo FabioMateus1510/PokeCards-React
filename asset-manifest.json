@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.css": "/PokeCards-react/static/css/main.0f92ce53.css",
-    "main.js": "/PokeCards-react/static/js/main.fa45a74f.js",
+    "main.css": "/PokeCards-react/static/css/main.d4f027c8.css",
+    "main.js": "/PokeCards-react/static/js/main.ee1fd3cf.js",
     "static/js/787.7e0b23c5.chunk.js": "/PokeCards-react/static/js/787.7e0b23c5.chunk.js",
     "static/media/psychicBackground.gif": "/PokeCards-react/static/media/psychicBackground.48cbf0da3a4877caa61d.gif",
-    "static/media/n1582570.gif": "/PokeCards-react/static/media/n1582570.5c4997bf44264ed2b460.gif",
     "static/media/dragonBackground.gif": "/PokeCards-react/static/media/dragonBackground.a3ccf26eabf074b742e6.gif",
     "static/media/fireBackground.jpg": "/PokeCards-react/static/media/fireBackground.5db3c383b7cda7b32392.jpg",
     "static/media/steelBackground.gif": "/PokeCards-react/static/media/steelBackground.787dc61a86ead62df6f9.gif",
@@ -18,18 +17,22 @@
     "static/media/grassBackground.jpg": "/PokeCards-react/static/media/grassBackground.7c39a81c201ef860fdc1.jpg",
     "static/media/normalBackground.jpg": "/PokeCards-react/static/media/normalBackground.d3f2874f7b14233ea86e.jpg",
     "static/media/fightingBackground.jpg": "/PokeCards-react/static/media/fightingBackground.da83a92f88dc91597e8d.jpg",
+    "static/media/charizard.gif": "/PokeCards-react/static/media/charizard.c64d80de278db21178cc.gif",
     "static/media/electricBackground.jpg": "/PokeCards-react/static/media/electricBackground.53b66df3e10e1bd557e4.jpg",
     "static/media/bluePokeball.png": "/PokeCards-react/static/media/bluePokeball.9daa3947632ff6f69e3f.png",
     "static/media/rockBackground.jpg": "/PokeCards-react/static/media/rockBackground.801c366e10a0c4ee87c8.jpg",
     "static/media/groundBackground.jpg": "/PokeCards-react/static/media/groundBackground.d4d9cfe674a472738613.jpg",
     "static/media/flyingBackground.jpg": "/PokeCards-react/static/media/flyingBackground.82f026558bdf39bc7108.jpg",
+    "static/media/pikachuPokeball.gif": "/PokeCards-react/static/media/pikachuPokeball.97c537bf1bbe7d125399.gif",
+    "static/media/magikarp.gif": "/PokeCards-react/static/media/magikarp.dee1df523140f3206f45.gif",
+    "static/media/jolteon.gif": "/PokeCards-react/static/media/jolteon.9e924a314c78f30c83f3.gif",
     "index.html": "/PokeCards-react/index.html",
-    "main.0f92ce53.css.map": "/PokeCards-react/static/css/main.0f92ce53.css.map",
-    "main.fa45a74f.js.map": "/PokeCards-react/static/js/main.fa45a74f.js.map",
+    "main.d4f027c8.css.map": "/PokeCards-react/static/css/main.d4f027c8.css.map",
+    "main.ee1fd3cf.js.map": "/PokeCards-react/static/js/main.ee1fd3cf.js.map",
     "787.7e0b23c5.chunk.js.map": "/PokeCards-react/static/js/787.7e0b23c5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f92ce53.css",
-    "static/js/main.fa45a74f.js"
+    "static/css/main.d4f027c8.css",
+    "static/js/main.ee1fd3cf.js"
   ]
 }
