@@ -14,9 +14,12 @@ const Pokedex = (props) => {
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   const [selectedType, setSelectedType] = useState('all');
   const [selectedGeneration, setSelectedGeneration] = useState('all');
+  const [selectedHeight, setSelectedHeight] = useState('all');
+  const [selectedWeight, setSelectedWeight] = useState('all');
+
   const { favoritePokemons } = useContext(FavoriteContext);
   const { pokemons, loading, page, setPage, totalPages, setLoading } = props;
-  const [filteredByType, setFilteredByType] = useState(pokemons);
+  const [filteredPokemons, setFilteredPokemons] = useState(pokemons);
   const [filteredByName, setFilteredByName] = useState(pokemons);
 
   const generations = [
@@ -30,21 +33,24 @@ const Pokedex = (props) => {
     { generation: 'Gen VIII', minID: 810, maxID: 898 },
   ];
 
-  // const applyGenerationFilter = useCallback(() => {
-  //   if (selectedGeneration === 'all' || selectedGeneration === 'Generation') {
-  //     setFilteredByGeneration(pokemons);
-  //   } else {
-  //     const generation = generations.find(
-  //       (gen) => gen.generation === selectedGeneration
-  //     );
-  //     console.log(generation);
-  //     const filteredByGeneration = pokemons.filter(
-  //       (pokemon) =>
-  //         pokemon.id >= generation.minID && pokemon.id <= generation.maxID
-  //     );
-  //     setFilteredByGeneration(filteredByGeneration);
-  //   }
-  // }, [pokemons, selectedGeneration]);
+  const weightCategories = [
+    { category: 'Light', min: 0, max: 200 },
+    { category: 'Medium', min: 201, max: 700 },
+    { category: 'Heavy', min: 701, max: Infinity },
+  ];
+
+  const heightCategories = [
+    { category: 'Small', min: 0, max: 8 },
+    { category: 'Medium', min: 9, max: 18 },
+    { category: 'Big', min: 19, max: Infinity },
+  ];
+
+  const clearFilters = () => {
+    setSelectedType('all');
+    setSelectedGeneration('all');
+    setSelectedHeight('all');
+    setSelectedWeight('all');
+  };
 
   const onPrevClickHandler = () => {
     if (page > 0) {
@@ -67,40 +73,102 @@ const Pokedex = (props) => {
           pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
         );
       } else {
-        filteredByName = filteredByType.filter((pokemon) =>
+        filteredByName = filteredPokemons.filter((pokemon) =>
           pokemon.name.toLowerCase().includes(searchValue.toLowerCase())
         );
       }
       setFilteredByName(filteredByName);
     },
-    [pokemons, selectedType, filteredByType]
+    [pokemons, selectedType, filteredPokemons]
   );
 
-  const applyTypeFilter = useCallback(() => {
-    // setLoading(true);
-    console.log('estou aqui');
-    let filteredByType = pokemons;
-    if (selectedType === 'all' && selectedGeneration === 'all') {
-      setFilteredByType(pokemons);
+  const weightFilter = useCallback(
+    (pokemonList) => {
+      const categoryfiltered = weightCategories.find(
+        (category) => category.category === selectedWeight
+      );
+      return pokemonList.filter(
+        (pokemon) =>
+          pokemon.weight >= categoryfiltered.min &&
+          pokemon.weight <= categoryfiltered.max
+      );
+    },
+    [selectedWeight]
+  );
+
+  const heightFilter = useCallback(
+    (pokemonList) => {
+      const categoryfiltered = heightCategories.find(
+        (category) => category.category === selectedHeight
+      );
+      return pokemonList.filter(
+        (pokemon) =>
+          pokemon.height >= categoryfiltered.min &&
+          pokemon.height <= categoryfiltered.max
+      );
+    },
+    [selectedHeight]
+  );
+
+  const generationFilter = useCallback(
+    (pokemonList) => {
+      const generationfiltered = generations.find(
+        (gen) => gen.generation === selectedGeneration
+      );
+      return pokemonList.filter(
+        (pokemon) =>
+          pokemon.id >= generationfiltered.minID &&
+          pokemon.id <= generationfiltered.maxID
+      );
+    },
+    [selectedGeneration]
+  );
+
+  const typeFilter = useCallback(
+    (pokemonList) => {
+      return pokemonList.filter((pokemon) =>
+        pokemon.types.some((type) => type.type.name === selectedType)
+      );
+    },
+    [selectedType]
+  );
+
+  const applyFilters = useCallback(() => {
+    // console.log('estou aqui');
+    let filteredPokemons2 = pokemons;
+    if (
+      selectedType === 'all' &&
+      selectedGeneration === 'all' &&
+      selectedHeight === 'all' &&
+      selectedWeight === 'all'
+    ) {
+      setFilteredPokemons(pokemons);
     } else {
       if (selectedGeneration !== 'all') {
-        const generation = generations.find(
-          (gen) => gen.generation === selectedGeneration
-        );
-        filteredByType = filteredByType.filter(
-          (pokemon) =>
-            pokemon.id >= generation.minID && pokemon.id <= generation.maxID
-        );
+        filteredPokemons2 = generationFilter(filteredPokemons2);
       }
       if (selectedType !== 'all') {
-        filteredByType = filteredByType.filter((pokemon) =>
-          pokemon.types.some((type) => type.type.name === selectedType)
-        );
+        filteredPokemons2 = typeFilter(filteredPokemons2);
       }
-      setFilteredByType(filteredByType);
-      // setLoading(false);
+      if (selectedHeight !== 'all') {
+        filteredPokemons2 = heightFilter(filteredPokemons2);
+      }
+      if (selectedWeight !== 'all') {
+        filteredPokemons2 = weightFilter(filteredPokemons2);
+      }
+      setFilteredPokemons(filteredPokemons2);
     }
-  }, [selectedType, pokemons, selectedGeneration, generations]);
+  }, [
+    pokemons,
+    selectedType,
+    selectedGeneration,
+    selectedHeight,
+    selectedWeight,
+    generationFilter,
+    typeFilter,
+    heightFilter,
+    weightFilter,
+  ]);
 
   const handleGenerationChange = (event) => {
     setSelectedGeneration(event.target.value);
@@ -112,6 +180,16 @@ const Pokedex = (props) => {
     setSearch('');
   };
 
+  const handleHeightChange = (event) => {
+    setSelectedHeight(event.target.value);
+    setSearch('');
+  };
+
+  const handleWeightChange = (event) => {
+    setSelectedWeight(event.target.value);
+    setSearch('');
+  };
+
   const showFavorites = useCallback(() => {
     setShowOnlyFavorites((prevShowOnlyFavorites) => !prevShowOnlyFavorites);
   }, []);
@@ -120,7 +198,7 @@ const Pokedex = (props) => {
     ? favoritePokemons
     : search
     ? filteredByName
-    : filteredByType;
+    : filteredPokemons;
 
   const pokemonKeyPrefix = showOnlyFavorites
     ? 'fav'
@@ -129,19 +207,17 @@ const Pokedex = (props) => {
     : 'byType';
 
   useEffect(() => {
-    applyTypeFilter();
-  }, [selectedType, pokemons, applyTypeFilter, selectedGeneration]);
+    applyFilters();
+  }, [selectedType, pokemons, applyFilters, selectedGeneration]);
 
   return (
     <div className='pokedex'>
       <div className='pokedex-header'>
-        <Filters
-          selectedType={selectedType}
-          selectedGeneration={selectedGeneration}
-          handleTypeChange={handleTypeChange}
-          handleGenerationChange={handleGenerationChange}
-          search={search}
-          handleSearchChange={handleSearchChange}
+        <input
+          className='searchbar'
+          value={search}
+          placeholder='Buscar'
+          onChange={handleSearchChange}
         />
         <h1 className='title'>PokeCards</h1>
         <div className='pagination-favorites-container'>
@@ -157,6 +233,19 @@ const Pokedex = (props) => {
           />
         </div>
       </div>
+      <Filters
+        selectedType={selectedType}
+        selectedGeneration={selectedGeneration}
+        selectedHeight={selectedHeight}
+        selectedWeight={selectedWeight}
+        handleTypeChange={handleTypeChange}
+        handleGenerationChange={handleGenerationChange}
+        handleHeightChange={handleHeightChange}
+        handleWeightChange={handleWeightChange}
+        search={search}
+        handleSearchChange={handleSearchChange}
+        clearFilters={clearFilters}
+      />
 
       {loading ? (
         <Loading />

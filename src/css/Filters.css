@@ -1,32 +1,33 @@
+.filters-tab {
+  width: 70%;
+  margin: 0 auto;
+}
 .filters {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  width: 15%;
-  height: 5vw;
-
-  /* background-color: red; */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+  height: 10vw;
+  max-height: 0;
+  transition: 1s ease-in;
+  overflow: hidden;
 }
 
-.types-option,
-.generation-option {
+.option {
+  margin-top: 20px;
+  cursor: pointer;
   font-size: 0.92vw;
-  background-color: rgb(0, 157, 255);
-  width: 100%;
-  height: 1.4vw;
+  background-color: #1356aa;
+  width: 10.6vw;
+  height: 1.7vw;
   border-radius: 5px;
   text-align: center;
-  border: 1.5px solid white;
+  border: 1px solid white;
 }
 
-.types-option,
-.generation-option option {
-  font-size: 0.92vw;
-  color: white;
-}
-
-.generation-option {
-  background-color: rgb(10, 181, 178);
+.orderBy-option {
+  background-color: rgb(21, 167, 211);
 }
 
 .searchbar {
@@ -36,7 +37,7 @@
   background-color: transparent;
   height: 1.4vw;
   /* padding: 7px; */
-  width: 97%;
+  width: 10vw;
   font-size: 0.92vw;
 }
 
@@ -44,4 +45,57 @@
   text-align: center;
   color: white;
   font-size: 0.92vw;
+}
+
+.clear-filters-btn {
+  margin-top: 20px;
+  background-color: rgb(251, 39, 39);
+  border: 2px solid white;
+  cursor: pointer;
+  font-size: 0.92vw;
+  width: 10.6vw;
+  height: 1.7vw;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.clear-filters-btn:hover {
+  background-color: rgb(188, 0, 0);
+}
+
+.filters-checkbox {
+  appearance: none;
+}
+
+.filters-label {
+  background-color: #1356aa;
+  width: 8vw;
+  height: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding: 8px 0 5px 15px;
+  transition: 3s;
+  border: 1px solid white;
+}
+
+.filters-label::after {
+  font-family: 'Instrument Sans', sans-serif;
+
+  font-size: 1.1vw;
+  content: '->';
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  transform: rotate(90deg);
+  transition: transform 1s;
+}
+
+.filters-checkbox:checked ~ .filters-label::after {
+  transform: rotate(-450deg);
+}
+
+.filters-checkbox:checked ~ .filters {
+  max-height: 6vh;
 }

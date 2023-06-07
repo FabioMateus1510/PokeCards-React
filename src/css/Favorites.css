@@ -6,12 +6,13 @@
   font-size: 0.8vw;
   width: 94%;
   height: 1.5vw;
-  transition: all 0.7s;
-  background-color: rgb(255, 255, 255);
+  transition: transform 0.7s, background-color 0.3s;
+  background-color: rgb(198, 198, 198);
   border-radius: 5px;
   color: rgb(11, 0, 91);
 }
 
 .favorites-counter:hover {
   transform: scale(1.07);
+  background-color: rgb(255, 255, 255);
 }

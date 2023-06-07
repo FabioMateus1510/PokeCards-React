@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   width: 72%;
-  margin: 40px auto 40px auto;
+  margin: 40px auto -5px auto;
   padding: 10px;
 }
 
@@ -37,10 +37,10 @@
   align-content: flex-start;
   /* align-items: flex-start; */
   /* justify-content: center; */
-  gap: 16px;
+  gap: 1vw;
   flex-wrap: wrap;
-  height: 75vh;
-  width: 80%;
+  height: 73vh;
+  width: 75%;
   margin: 0px auto 0px auto;
 }
 
@@ -53,20 +53,18 @@
   } */
 
 .simplebar-content-wrapper {
-  padding: 7px 0;
+  padding: 40px 0 0 0;
 }
 
 .simplebar-track {
-  right: 9vw; /* Ajuste a posição horizontal da scrollbar */
-  /* top: 15vw;  */
-  /* width: 8px; Ajuste a largura da scrollbar */
-  /* background-color: #f0f0f0; Cor de fundo da scrollbar */
-  /* border-radius: 4px; Raio de borda da scrollbar */
+  right: 10vw; /* Ajuste a posição horizontal da scrollbar */
+  padding-top: 35px;
 }
 
 @media (max-width: 480px) {
   .cards-container {
-    justify-content: center;
+    /* justify-content: center; */
+    gap: 1.6vw;
   }
   .simplebar-scrollbar::before {
     display: none;

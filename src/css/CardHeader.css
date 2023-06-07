@@ -12,6 +12,7 @@
 }
 
 .card-header span {
+  z-index: 1;
   text-transform: capitalize;
   font-family: 'Oxanium', cursive;
   font-weight: 600;

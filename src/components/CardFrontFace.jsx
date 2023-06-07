@@ -101,12 +101,18 @@ export default function CardFrontFace(props) {
           </div>
           <div className='card-info-abilities'>
             {pokemon.abilities.map((element, index) => (
-              <span
+              <a
+                target='_blank'
+                rel='noreferrer noopener'
+                href={`https://bulbapedia.bulbagarden.net/wiki/${element.ability.name
+                  .split('-')
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join('_')}_(Ability)`}
                 className='info-ability'
                 key={`${index}${element.ability.name}`}
               >
                 {element.ability.name.replace('-', ' ')}
-              </span>
+              </a>
             ))}
           </div>
         </div>

@@ -34,8 +34,8 @@ export default function CardBackFace(props) {
           alt='bluePokeball'
         ></img>
         <div className='info-stats'>
-          {stats.map((stat) => (
-            <div className='stat'>
+          {stats.map((stat, index) => (
+            <div className='stat' key={`${index}${stat.statName}`}>
               <span>{`${stat.statName} ${stat.statValue}`}</span>
               <span
                 className='stat-bar'

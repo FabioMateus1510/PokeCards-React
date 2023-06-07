@@ -2,10 +2,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 65vh; /* opcional, define a altura da div para preencher a tela inteira */
-  /* background-color: red; */
-}
-
-.loading {
-  /* width: 200px; */
+  height: 65vh;
 }

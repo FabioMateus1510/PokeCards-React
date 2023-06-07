@@ -38,7 +38,7 @@ export const typeToImage = {
   water: waterBackground,
 };
 
-const opacity = 0.7;
+const opacity = 0.85;
 
 export const tipoCores = {
   bug: `rgba(0, 255, 0, ${opacity})`,
