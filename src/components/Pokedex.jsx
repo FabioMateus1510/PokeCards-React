@@ -31,6 +31,7 @@ const Pokedex = (props) => {
     { generation: 'Gen VI', minID: 650, maxID: 721 },
     { generation: 'Gen VII', minID: 722, maxID: 809 },
     { generation: 'Gen VIII', minID: 810, maxID: 898 },
+    { generation: 'Gen IX', minID: 899, maxID: 1008 },
   ];
 
   const weightCategories = [
@@ -250,7 +251,7 @@ const Pokedex = (props) => {
       {loading ? (
         <Loading />
       ) : (
-        <SimpleBar forceVisible='y' autoHide={false} style={{ maxHeight: 763 }}>
+        <SimpleBar forceVisible='y' autoHide={false} style={{ maxHeight: 750 }}>
           <div className='cards-container'>
             {pokemonList.map((pokemon, index) => (
               <PokemonCard

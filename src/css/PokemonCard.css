@@ -1,5 +1,5 @@
 .card-wrapper {
-  width: 32.4%;
+  width: 32.39%;
   transition: transform 0.3s ease-out;
 }
 
@@ -24,7 +24,7 @@
   box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.4);
   transition: transform 0.6s ease-in-out, box-shadow 0.2s ease-out;
   transform-style: preserve-3d;
-  border: 1px solid rgba(0, 0, 0, 0.52);
+  border: 1.5px solid rgba(0, 0, 0, 0.662);
 }
 
 .pokemon-card:hover {

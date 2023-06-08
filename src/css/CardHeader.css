@@ -1,7 +1,8 @@
 .card-header {
+  box-sizing: border-box;
   font-size: 1.2vw;
   height: 18%;
-  /* width: 100%; */
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

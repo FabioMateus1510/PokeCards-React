@@ -53,7 +53,7 @@ export const tipoCores = {
   grass: `rgba(0, 174, 0, ${opacity})`,
   ground: `rgba(149, 95, 62, ${opacity})`,
   ice: `rgba(225, 231, 228, ${opacity})`,
-  normal: `rgba(245, 245, 220, ${opacity})`,
+  normal: `rgba(187, 167, 141, ${opacity})`,
   poison: `rgba(198, 84, 255, ${opacity})`,
   psychic: `rgba(255, 192, 203, ${opacity})`,
   rock: `rgba(139, 139, 139, ${opacity})`,

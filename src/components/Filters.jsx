@@ -65,6 +65,7 @@ const Filters = (props) => {
           <option value='Gen VI'>Gen VI</option>
           <option value='Gen VII'>Gen VII</option>
           <option value='Gen VIII'>Gen VIII</option>
+          <option value='Gen IX'>Gen IX</option>
         </select>
         <select
           className='height-option option'
